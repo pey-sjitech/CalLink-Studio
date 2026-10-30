@@ -925,7 +925,7 @@ function updateLinks() {
 }
 
 // ─── EMAIL-SAFE HTML ───
-// Inline styles and text glyphs only: Gmail/Outlook strip classes, <style> and SVG.
+// Inline styles and hosted PNG icons only: Gmail/Outlook strip classes, <style> and inline SVG.
 function attrEsc(v) { return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
 function buildEmailHtml(withComment) {
@@ -937,17 +937,18 @@ function buildEmailHtml(withComment) {
     ';font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background-color:' + (filled ? bc : '#ffffff') + ';';
   const logo = /^https?:\/\//i.test(brand.logo)
     ? `<img src="${attrEsc(brand.logo)}" alt="" height="32" style="display:block;height:32px;width:auto;border:0;margin:0 0 10px 0;">\n` : '';
+  const ICON_BASE = 'https://pey-sjitech.github.io/CalLink-Studio/icons/';
   const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(links.ics);
   const items = [
-    {label:'Google Calendar', href:links.google,    color:'#EA4335', extra:' target="_blank"'},
-    {label:'Outlook',         href:links.outlook,   color:'#0078D4', extra:' target="_blank"'},
-    {label:'Office 365',      href:links.office365, color:'#0078D4', extra:' target="_blank"'},
-    {label:'Yahoo',           href:links.yahoo,     color:'#6001D2', extra:' target="_blank"'},
-    {label:'iCalendar',       href:icsHref,         color:'#F2463A', extra:' download="event.ics"'}
+    {label:'Google Calendar', icon:'google', href:links.google,    color:'#EA4335', extra:' target="_blank"'},
+    {label:'Outlook', icon:'outlook',         href:links.outlook,   color:'#0078D4', extra:' target="_blank"'},
+    {label:'Office 365', icon:'office365',      href:links.office365, color:'#0078D4', extra:' target="_blank"'},
+    {label:'Yahoo', icon:'yahoo',           href:links.yahoo,     color:'#6001D2', extra:' target="_blank"'},
+    {label:'iCalendar', icon:'ical',       href:icsHref,         color:'#F2463A', extra:' download="event.ics"'}
   ];
   const cells = items.map(i =>
 `    <td style="padding:4px;">
-      <a href="${attrEsc(i.href)}"${i.extra} style="${btnStyle}"><span style="color:${filled ? '#ffffff' : i.color};font-size:14px;line-height:12px;">&#9679;</span>&nbsp;${i.label}</a>
+      <a href="${attrEsc(i.href)}"${i.extra} style="${btnStyle}"><img src="${ICON_BASE}${i.icon}.png" width="16" height="16" alt="" style="display:inline-block;vertical-align:middle;border:0;width:16px;height:16px;">&nbsp;<span style="vertical-align:middle;">${i.label}</span></a>
     </td>`).join('\n');
   return `${withComment ? '<!-- Add to Calendar Buttons — CalLink Studio -->\n' : ''}${logo}<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin:0 0 10px 0;">Add to Calendar</p>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
