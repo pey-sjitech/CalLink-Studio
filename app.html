@@ -697,9 +697,9 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#6001D2"/><path d="M8 10h10l8 14 8-14h10L30 32v10h-10V32L8 10z" fill="#fff"/></svg>
               Yahoo
             </a>
-            <a id="btnApple" href="#" class="cal-btn-a" onclick="appleCalClick(event)" title="Click to copy ICS — save as event.ics and open in Apple Calendar / iCal">
+            <a id="btnApple" href="#" class="cal-btn-a" onclick="appleCalClick(event)" title="Click to copy ICS — save as event.ics and open in iCalendar">
               <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="12" rx="6" fill="#F2463A"/><rect y="7" width="48" height="5" fill="#F2463A"/><rect x="10" y="0" width="4" height="8" rx="2" fill="#7b0000"/><rect x="34" y="0" width="4" height="8" rx="2" fill="#7b0000"/><text x="24" y="35" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle" letter-spacing="1">SUN</text></svg>
-              Apple
+              iCalendar
             </a>
           </div>
         </div>
@@ -797,7 +797,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 
       <!-- ICS section -->
       <div class="info-row">
-        <span>Need an <strong>.ics</strong> file for Apple / Outlook Desktop?</span>
+        <span>Need an <strong>.ics</strong> file for iCalendar / Outlook Desktop?</span>
         <button class="btn btn-ghost btn-sm" onclick="toggleIcs()">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           Copy ICS
@@ -955,7 +955,7 @@ function updateLinks() {
   document.getElementById('btnOutlook').href = links.outlook;
   document.getElementById('btnOffice').href  = links.office365;
   document.getElementById('btnYahoo').href   = links.yahoo;
-  // Apple uses ICS — href left as '#', handled by appleCalClick()
+  // iCalendar uses ICS — href left as '#', handled by appleCalClick()
 
   if (icsOpen) document.getElementById('icsRaw').textContent = links.ics;
   generateHtml(title, links.google, links.outlook, links.office365, links.yahoo, links.ics);
@@ -995,7 +995,7 @@ function generateHtml(title, gUrl, oUrl, o365, yUrl, icsData) {
     <td style="padding:4px;">
       <a href="data:text/calendar;charset=utf-8,${encodeURIComponent(icsData)}" download="event.ics" style="${btnStyle}">
         <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="11" rx="5" fill="#F2463A"/><rect y="7" width="48" height="4" fill="#F2463A"/><rect x="9" y="0" width="4" height="7" rx="2" fill="#7b0000"/><rect x="35" y="0" width="4" height="7" rx="2" fill="#7b0000"/><text x="24" y="36" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">SUN</text></svg>
-        Apple Calendar
+        iCalendar
       </a>
     </td>
   </tr>
@@ -1017,7 +1017,7 @@ function appleCalClick(e) {
   e.preventDefault();
   if (!links.ics) { showToast('Fill in the event details first.', 'warn'); return; }
   copyText(links.ics, null);
-  showToast('ICS copied! Open Notes or TextEdit, paste, save as "event.ics", then double-click to add to Apple Calendar.', 'ok');
+  showToast('ICS copied! Open Notes or TextEdit, paste, save as "event.ics", then double-click to add to iCalendar.', 'ok');
 }
 
 // ─── ICS TOGGLE ───
