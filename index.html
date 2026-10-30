@@ -1,1141 +1,587 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
-<title>CalLink Studio</title>
-<meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.441.0/umd/lucide.min.js"></script>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+<!--
+Some of the files packed into this page (the "__bundler/manifest" data in this file, unpacked by the page’s script when it opens) are font files downloaded unchanged from Google Fonts (fonts.gstatic.com) when the page was saved. Google Fonts serves each family in pieces, one file per range of characters, so these may not be complete families. Each family’s license follows and still applies to its files. If you pass this file on, keep this comment in it.
 
-<style>
-/* Layout: sticky header + two-col form/preview (5+7 lg), single col on mobile */
-:root {
-  --bg:          #eef2f7;
-  --surface:     #ffffff;
-  --surface-2:   #f6f8fb;
-  --border:      #dde3ed;
-  --fg:          #0d1829;
-  --fg-2:        #4a5568;
-  --fg-3:        #8896aa;
-  --accent:      #2563eb;
-  --accent-h:    #1a4fc8;
-  --accent-sub:  #eff6ff;
-  --ok:          #059669;
-  --ok-sub:      #ecfdf5;
-  --pro:         #7c3aed;
-  --pro-sub:     #f5f3ff;
-  --pro-border:  #c4b5fd;
-  --warn:        #d97706;
-  --danger:      #dc2626;
-  --header-bg:   rgba(238,242,247,0.94);
-  color-scheme: light;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg:          #070d1a;
-    --surface:     #0e1624;
-    --surface-2:   #161e2e;
-    --border:      #1a2740;
-    --fg:          #e2e9f4;
-    --fg-2:        #7e96b6;
-    --fg-3:        #3e546e;
-    --accent:      #4a80f0;
-    --accent-h:    #6b9bff;
-    --accent-sub:  #0c1c42;
-    --ok:          #10b981;
-    --ok-sub:      #021a0d;
-    --pro:         #a78bfa;
-    --pro-sub:     #120a40;
-    --pro-border:  #4c2f9e;
-    --warn:        #f59e0b;
-    --danger:      #f87171;
-    --header-bg:   rgba(7,13,26,0.94);
-    color-scheme: dark;
+Inter
+
+Copyright 2020 The Inter Project Authors (https://github.com/rsms/inter)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+Syne
+
+Copyright 2017 The Syne Project Authors (https://gitlab.com/bonjour-monde/fonderie/syne-typeface)
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is copied below, and is also available with a FAQ at:
+https://scripts.sil.org/OFL
+
+
+-----------------------------------------------------------
+SIL OPEN FONT LICENSE Version 1.1 - 26 February 2007
+-----------------------------------------------------------
+
+PREAMBLE
+The goals of the Open Font License (OFL) are to stimulate worldwide
+development of collaborative font projects, to support the font creation
+efforts of academic and linguistic communities, and to provide a free and
+open framework in which fonts may be shared and improved in partnership
+with others.
+
+The OFL allows the licensed fonts to be used, studied, modified and
+redistributed freely as long as they are not sold by themselves. The
+fonts, including any derivative works, can be bundled, embedded,
+redistributed and/or sold with any software provided that any reserved
+names are not used by derivative works. The fonts and derivatives,
+however, cannot be released under any other type of license. The
+requirement for fonts to remain under this license does not apply
+to any document created using the fonts or their derivatives.
+
+DEFINITIONS
+"Font Software" refers to the set of files released by the Copyright
+Holder(s) under this license and clearly marked as such. This may
+include source files, build scripts and documentation.
+
+"Reserved Font Name" refers to any names specified as such after the
+copyright statement(s).
+
+"Original Version" refers to the collection of Font Software components as
+distributed by the Copyright Holder(s).
+
+"Modified Version" refers to any derivative made by adding to, deleting,
+or substituting -- in part or in whole -- any of the components of the
+Original Version, by changing formats or by porting the Font Software to a
+new environment.
+
+"Author" refers to any designer, engineer, programmer, technical
+writer or other person who contributed to the Font Software.
+
+PERMISSION & CONDITIONS
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of the Font Software, to use, study, copy, merge, embed, modify,
+redistribute, and sell modified and unmodified copies of the Font
+Software, subject to the following conditions:
+
+1) Neither the Font Software nor any of its individual components,
+in Original or Modified Versions, may be sold by itself.
+
+2) Original or Modified Versions of the Font Software may be bundled,
+redistributed and/or sold with any software, provided that each copy
+contains the above copyright notice and this license. These can be
+included either as stand-alone text files, human-readable headers or
+in the appropriate machine-readable metadata fields within text or
+binary files as long as those fields can be easily viewed by the user.
+
+3) No Modified Version of the Font Software may use the Reserved Font
+Name(s) unless explicit written permission is granted by the corresponding
+Copyright Holder. This restriction only applies to the primary font name as
+presented to the users.
+
+4) The name(s) of the Copyright Holder(s) or the Author(s) of the Font
+Software shall not be used to promote, endorse or advertise any
+Modified Version, except to acknowledge the contribution(s) of the
+Copyright Holder(s) and the Author(s) or with their explicit written
+permission.
+
+5) The Font Software, modified or unmodified, in part or in whole,
+must be distributed entirely under this license, and must not be
+distributed under any other license. The requirement for fonts to
+remain under this license does not apply to any document created
+using the Font Software.
+
+TERMINATION
+This license becomes null and void if any of the above conditions are
+not met.
+
+DISCLAIMER
+THE FONT SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT
+OF COPYRIGHT, PATENT, TRADEMARK, OR OTHER RIGHT. IN NO EVENT SHALL THE
+COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+INCLUDING ANY GENERAL, SPECIAL, INDIRECT, INCIDENTAL, OR CONSEQUENTIAL
+DAMAGES, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+FROM, OUT OF THE USE OR INABILITY TO USE THE FONT SOFTWARE OR FROM
+OTHER DEALINGS IN THE FONT SOFTWARE.
+
+-->
+  <title>CalLink Studio</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #faf9f5; display: flex; align-items: center; justify-content: center; min-height: 100vh; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+    #__bundler_loading { position: fixed; bottom: 20px; right: 20px; font: 13px/1.4 -apple-system, BlinkMacSystemFont, sans-serif; color: #666; background: #fff; padding: 8px 14px; border-radius: 8px; box-shadow: 0 1px 4px rgba(0,0,0,0.12); z-index: 10000; }
+    #__bundler_thumbnail { position: fixed; inset: 0; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; background: #faf9f5; z-index: 9999; }
+    #__bundler_thumbnail svg { width: 100%; height: 100%; object-fit: contain; }
+    #__bundler_placeholder { color: #999; font-size: 14px; }
+  </style>
+  <noscript>
+    <style>#__bundler_loading { display: none; }</style>
+    <div style="position:fixed;bottom:12px;left:12px;font:13px/1.4 -apple-system,BlinkMacSystemFont,sans-serif;color:#999;background:rgba(255,255,255,0.9);padding:6px 12px;border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,0.08);z-index:10000;">
+      This page requires JavaScript to display.
+    </div>
+  </noscript>
+</head>
+<body>
+  <div id="__bundler_placeholder">Loading CalLink Studio...</div>
+  <div id="__bundler_loading">Unpacking...</div>
+
+  <script>
+    
+document.addEventListener('DOMContentLoaded', async function() {
+  const loading = document.getElementById('__bundler_loading');
+  function setStatus(msg) { if (loading) loading.textContent = msg; }
+
+  const FONT_MIME = /^(font[/]|application[/](x-)?font-|application[/]vnd\.ms-fontobject)/i;
+  const MIME_TOKEN = /^[\w.+-]+[/][\w.+-]+$/;
+  function toBase64(bytes) {
+    let bin = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) {
+      bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    }
+    return btoa(bin);
   }
-}
-:root[data-theme="dark"] {
-  --bg:          #070d1a;
-  --surface:     #0e1624;
-  --surface-2:   #161e2e;
-  --border:      #1a2740;
-  --fg:          #e2e9f4;
-  --fg-2:        #7e96b6;
-  --fg-3:        #3e546e;
-  --accent:      #4a80f0;
-  --accent-h:    #6b9bff;
-  --accent-sub:  #0c1c42;
-  --ok:          #10b981;
-  --ok-sub:      #021a0d;
-  --pro:         #a78bfa;
-  --pro-sub:     #120a40;
-  --pro-border:  #4c2f9e;
-  --warn:        #f59e0b;
-  --danger:      #f87171;
-  --header-bg:   rgba(7,13,26,0.94);
-  color-scheme: dark;
-}
 
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-body{
-  font-family:'Source Sans 3',system-ui,sans-serif;
-  font-size:14px;line-height:1.5;
-  background:var(--bg);color:var(--fg);
-  min-height:100%;
-  padding-left:max(16px,env(safe-area-inset-left,0px));
-  padding-right:max(16px,env(safe-area-inset-right,0px));
-  padding-block:0;
-}
-h1,h2,h3,h4,.ui-font,label,button{font-family:'Fraunces',Georgia,serif;}
-input,textarea,select,pre{font-family:'Source Sans 3',monospace;}
-button{cursor:pointer;border:none;background:none;}
-a{text-decoration:none;color:inherit;}
-img{max-width:100%;}
+  // Error sink persists across replaceWith since it's on window, not the DOM.
+  window.addEventListener('error', function(e) {
+    // Failed resource loads (CSP-blocked links, scripts, images) fire plain
+    // events at the element — warn only; real JS errors carry message/error.
+    if (!e.message && !e.error && e.target && e.target !== window) {
+      console.warn('[bundle] resource failed to load:',
+        e.target.tagName, String(e.target.src || e.target.href || ''));
+      return;
+    }
+    var p = document.body || document.documentElement;
+    var d = document.getElementById('__bundler_err') || p.appendChild(document.createElement('div'));
+    d.id = '__bundler_err';
+    d.style.cssText = 'position:fixed;bottom:12px;left:12px;right:12px;font:12px/1.4 ui-monospace,monospace;background:#2a1215;color:#ff8a80;padding:10px 14px;border-radius:8px;border:1px solid #5c2b2e;z-index:99999;white-space:pre-wrap;max-height:40vh;overflow:auto';
+    d.textContent = (d.textContent ? d.textContent + String.fromCharCode(10) : '') +
+      '[bundle] ' + (e.message || e.type) +
+      (e.filename ? ' (' + e.filename.slice(0, 60) + ':' + e.lineno + ')' : '');
+  }, true);
 
-/* ─── HEADER ─── */
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:50;background:var(--header-bg);}
-.site-header{
-  position:sticky;top:env(safe-area-inset-top,0px);z-index:40;
-  background:var(--header-bg);border-bottom:1px solid var(--border);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-}
-.header-inner{
-  display:flex;align-items:center;justify-content:space-between;gap:10px;
-  height:60px;
-}
-.logo{display:flex;align-items:center;gap:10px;flex-shrink:0;}
-.logo-icon{
-  width:36px;height:36px;background:var(--accent);border-radius:10px;
-  display:flex;align-items:center;justify-content:center;color:#fff;flex-shrink:0;
-  box-shadow:0 2px 10px color-mix(in srgb,var(--accent) 38%,transparent);
-}
-.logo-icon svg{width:18px;height:18px;}
-.logo h1{font-size:15px;font-weight:800;letter-spacing:-0.4px;line-height:1.1;}
-.logo p{font-size:11px;color:var(--fg-3);font-family:'Source Sans 3',sans-serif;}
+  try {
+    const manifestEl = document.querySelector('script[type="__bundler/manifest"]');
+    const templateEl = document.querySelector('script[type="__bundler/template"]');
+    if (!manifestEl || !templateEl) {
+      setStatus('Error: missing bundle data');
+      console.error('[bundler] Missing script tags — manifestEl:', !!manifestEl, 'templateEl:', !!templateEl);
+      return;
+    }
 
-.usage-pill{
-  display:flex;align-items:center;gap:8px;
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:99px;padding:5px 12px 5px 10px;
-  font-size:11px;font-weight:700;color:var(--fg-2);white-space:nowrap;
-}
-.usage-bar{width:44px;height:4px;background:var(--border);border-radius:99px;overflow:hidden;}
-.usage-bar-fill{height:100%;width:30%;background:var(--accent);border-radius:99px;}
+    const manifest = JSON.parse(manifestEl.textContent);
+    let template = JSON.parse(templateEl.textContent);
 
-.header-acts{display:flex;align-items:center;gap:7px;}
+    // Nested page bundles (iframe targets). Each ships ONCE, in the ROOT
+    // document's manifest; frame srcs carry an about:blank#<uuid> marker
+    // instead of a substitutable uuid. Every document mints the blobs for
+    // its OWN frames — from local text at the root, or text obtained from
+    // its DIRECT parent over the relay protocol below — so each frame
+    // navigation stays same-origin with its initiator and a deduped page
+    // loads at any depth on any host, including a file:// download's
+    // opaque origins (where a blob minted by one document cannot be
+    // navigated to by another).
+    const pageOrderEl = document.querySelector('script[type="__bundler/page_order"]');
+    const pageOrder = pageOrderEl ? JSON.parse(pageOrderEl.textContent) : [];
+    const pageSet = new Set(pageOrder);
+    const pageTexts = {};
 
-/* ─── BUTTONS ─── */
-.btn{
-  display:inline-flex;align-items:center;gap:6px;
-  padding:7px 14px;border-radius:10px;
-  font-size:12px;font-weight:700;font-family:'Fraunces',Georgia,serif;
-  transition:all .15s;cursor:pointer;border:none;line-height:1;
-}
-.btn svg{width:14px;height:14px;flex-shrink:0;}
-.btn-primary{background:var(--accent);color:#fff;}
-.btn-primary:hover{background:var(--accent-h);}
-.btn-ok{background:var(--ok);color:#fff;}
-.btn-ok:hover{filter:brightness(.9);}
-.btn-ghost{background:transparent;color:var(--fg-2);border:1px solid var(--border);}
-.btn-ghost:hover{background:var(--surface-2);color:var(--fg);}
-.btn-dark{background:var(--fg);color:var(--bg);}
-.btn-dark:hover{opacity:.85;}
-.btn-pro{background:var(--pro);color:#fff;}
-.btn-pro:hover{filter:brightness(1.1);}
-.btn-sm{padding:5px 11px;font-size:11px;border-radius:8px;}
-.btn-icon{padding:7px;border-radius:9px;}
-.btn-icon svg{width:16px;height:16px;}
+    // ── Nested-page text protocol (parent-chain relay) ──
+    // Page bundles ship once, in the ROOT document's manifest. Every
+    // document mints the blobs for its OWN frames, obtaining page text
+    // through a strict parent-chain relay: a document only ever SENDS to
+    // its direct parent (which, for every document the publisher's own
+    // runtime minted, is another publisher document) and only ACCEPTS
+    // text from that direct parent; requests from below are honored only
+    // for the document's own child frames, and the ROOT never sends
+    // upward at all. That last rule is load-bearing: the artifact host's
+    // frame-ancestors allows claude.ai (and friends) to frame an
+    // artifact, so window.top can be a FOREIGN document — a top-addressed
+    // protocol would hand page uuids to that ancestor and accept forged
+    // "page text" from it, minting attacker HTML as an artifact-origin
+    // blob document. The chain never touches the ancestor: requests stop
+    // at the root, replies are origin-addressed per hop (never '*' when
+    // an origin exists), and both directions are origin-gated (on https
+    // a foreign sender's origin can never equal this document's; in
+    // opaque contexts — file:// — everything serializes as 'null', where
+    // an embedded EXTERNAL frame still fails the gate by carrying its
+    // own real origin, and a sandboxed child of such a frame is excluded
+    // by the own-child-frames check plus uuid unguessability). Shape is
+    // deny-by-default: one request form, one reply form, no error
+    // replies.
+    // window.origin is the SERIALIZED SECURITY origin ('null' in opaque
+    // contexts such as a sandboxed preview iframe) — location.origin is
+    // computed from the URL and stays 'https://…' even when the document
+    // is sandboxed, which would misgate every opaque chain.
+    const OWN_TARGET = /^https?:[/][/]/.test(window.origin || '')
+      ? window.origin
+      : '*';
+    function trustedOrigin(e) {
+      if (e.origin === window.origin) return true; // https chains; opaque==opaque
+      // file:// trees: Chrome serializes the file document's origin as
+      // 'file://' while the blob: documents it mints serialize as 'null',
+      // so the two legitimate shapes can never string-match — accept the
+      // pair in both directions. https origins never serialize as either,
+      // and sender identity (own child frame / direct parent) is checked
+      // separately.
+      return (
+        (e.origin === 'null' &&
+          (window.origin === 'file://' ||
+            window.location.protocol === 'file:')) ||
+        (/^file:/.test(e.origin) && window.origin === 'null')
+      );
+    }
+    // Non-empty only in the root document (nested bundles ship an empty
+    // island), so it doubles as the root marker: the root answers from
+    // local text and treats a miss as authoritative — never relaying to
+    // its (possibly foreign) parent.
+    const isPageRoot = pageOrder.length > 0;
+    const blobUrls = {};
+    const resourceBlobs = {};
+    const UUID_SHAPE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+    const pendingFrames = {}; // uuid -> [{el, frag}] awaiting text for own frames
+    const pendingRelays = {}; // uuid -> [childWindow] awaiting text to pass down
+    function mountPage(el, frag, text) {
+      const pageBlob = new Blob([text], { type: 'text/html' });
+      const u = URL.createObjectURL(pageBlob);
+      resourceBlobs[u] = pageBlob;
+      el.src = u + frag;
+    }
+    function deliverPage(uuid, text) {
+      const frames = pendingFrames[uuid];
+      delete pendingFrames[uuid];
+      if (frames) for (const f of frames) mountPage(f.el, f.frag, text);
+      const relays = pendingRelays[uuid];
+      delete pendingRelays[uuid];
+      if (relays) {
+        for (const cw of relays) {
+          try { cw.postMessage({ __bundler_page: uuid, __bundler_text: text }, OWN_TARGET); } catch (err) { /* gone */ }
+        }
+      }
+    }
+    function ownFrameWindows() {
+      const out = [];
+      for (const f of Array.from(document.querySelectorAll('iframe'))) {
+        try { if (f.contentWindow) out.push(f.contentWindow); } catch (err) { /* detached */ }
+      }
+      return out;
+    }
+    window.addEventListener('message', function (e) {
+      const d = e.data;
+      if (!d || typeof d !== 'object' || !e.source) return;
+      // Origin gate first; the structural checks below (own-child-frames
+      // for requests, direct-parent + solicited-uuid for replies, the
+      // root's never-relay rule) are what hold in fully opaque chains
+      // where origin strings can't discriminate — a sandboxed root's
+      // FOREIGN wrapper still fails all three even though both serialize
+      // as real-vs-'null' rather than matching.
+      if (!trustedOrigin(e)) return;
+      if (typeof d.__bundler_need === 'string' && UUID_SHAPE.test(d.__bundler_need)) {
+        // Requests are honored only for this document's own child frames.
+        if (ownFrameWindows().indexOf(e.source) < 0) return;
+        const uuid = d.__bundler_need;
+        const text = pageTexts[uuid];
+        if (typeof text === 'string') {
+          try { e.source.postMessage({ __bundler_page: uuid, __bundler_text: text }, OWN_TARGET); } catch (err) { /* gone */ }
+          return;
+        }
+        if (isPageRoot || window.parent === window) return; // authoritative miss
+        const waiting = pendingRelays[uuid];
+        if (waiting) {
+          if (waiting.indexOf(e.source) < 0) waiting.push(e.source);
+          return;
+        }
+        // Never-answered uuids would otherwise accumulate forever under a
+        // request spray; past the cap (far above any real page count) new
+        // relays are dropped rather than remembered.
+        if (Object.keys(pendingRelays).length >= 128) return;
+        pendingRelays[uuid] = [e.source];
+        window.parent.postMessage({ __bundler_need: uuid }, OWN_TARGET);
+      } else if (
+        typeof d.__bundler_page === 'string' &&
+        UUID_SHAPE.test(d.__bundler_page) &&
+        typeof d.__bundler_text === 'string'
+      ) {
+        // The shape test is load-bearing beyond tidiness: the solicited
+        // check below uses the in operator, which matches prototype keys
+        // ('__proto__', 'constructor') — an unshaped key would reach
+        // deliverPage and throw, painting the error banner.
+        // Text is accepted only from the direct parent — the document
+        // that minted this one.
+        if (e.source !== window.parent || window.parent === window) return;
+        if (!(d.__bundler_page in pendingFrames) && !(d.__bundler_page in pendingRelays)) return;
+        deliverPage(d.__bundler_page, d.__bundler_text);
+      }
+    });
 
-/* ─── LAYOUT ─── */
-.main-grid{
-  display:grid;grid-template-columns:1fr;
-  gap:22px;padding-block:24px;
-}
-@media(min-width:1024px){.main-grid{grid-template-columns:5fr 7fr;}}
+    const uuids = Object.keys(manifest);
+    setStatus('Unpacking ' + uuids.length + ' assets...');
 
-/* ─── CARDS ─── */
-.card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:20px;}
-.card-hd{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:14px;margin-bottom:16px;border-bottom:1px solid var(--border);
-}
-.card-title{font-size:13px;font-weight:700;display:flex;align-items:center;gap:7px;}
-.card-title svg{width:15px;height:15px;color:var(--accent);}
-.card-link{font-size:11px;color:var(--accent);font-weight:600;cursor:pointer;border:none;background:none;font-family:'Fraunces',Georgia,serif;}
-.card-link:hover{text-decoration:underline;}
-.live-card{
-  background:linear-gradient(135deg,color-mix(in srgb,var(--accent-sub) 80%,var(--surface)) 0%,var(--surface) 100%);
-  border-color:color-mix(in srgb,var(--accent) 22%,var(--border));
-}
-.space-4{display:flex;flex-direction:column;gap:14px;}
-.space-3{display:flex;flex-direction:column;gap:10px;}
+    await Promise.all(uuids.map(async (uuid) => {
+      const entry = manifest[uuid];
+      try {
+        const binaryStr = atob(entry.data);
+        const bytes = new Uint8Array(binaryStr.length);
+        for (let i = 0; i < binaryStr.length; i++) bytes[i] = binaryStr.charCodeAt(i);
 
-/* ─── FORM ─── */
-.form-group{display:flex;flex-direction:column;gap:5px;}
-.form-label{font-size:11.5px;font-weight:700;color:var(--fg-2);display:flex;align-items:center;gap:4px;}
-.req{color:var(--danger);}
-.form-input,.form-sel,.form-ta{
-  width:100%;padding:8px 12px;
-  border:1.5px solid var(--border);border-radius:10px;
-  background:var(--surface);color:var(--fg);font-size:13px;
-  outline:none;-webkit-appearance:none;appearance:none;
-  transition:border-color .15s,box-shadow .15s;
-}
-.form-input:focus,.form-sel:focus,.form-ta:focus{
-  border-color:var(--accent);
-  box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent);
-}
-.form-input.err,.form-sel.err{border-color:var(--danger);}
-.form-ta{resize:vertical;min-height:76px;line-height:1.5;}
-.icon-wrap{position:relative;}
-.icon-wrap .fi{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--fg-3);pointer-events:none;width:14px;height:14px;}
-.icon-wrap .form-input{padding-left:33px;}
-.sel-wrap{position:relative;}
-.sel-wrap .chev{position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--fg-3);pointer-events:none;width:14px;height:14px;}
-.char-counter{font-size:10.5px;color:var(--fg-3);text-align:right;font-variant-numeric:tabular-nums;}
-.char-counter.warn{color:var(--warn);}
-.char-counter.over{color:var(--danger);font-weight:700;}
-.date-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:end;}
-@media(max-width:480px){.date-grid{grid-template-columns:1fr;}}
-.duration-tag{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--ok-sub);color:var(--ok);
-  font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;
-}
-.duration-tag.err{background:color-mix(in srgb,var(--danger) 10%,var(--surface));color:var(--danger);}
-.synced-sel{
-  width:100%;padding:9px 34px 9px 12px;
-  border:1.5px solid color-mix(in srgb,var(--accent) 32%,var(--border));
-  border-radius:10px;background:var(--surface);color:var(--fg);
-  font-size:13px;cursor:pointer;outline:none;
-  -webkit-appearance:none;appearance:none;
-}
-.synced-sel:focus{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent);}
-.eyebrow{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--fg-3);display:flex;align-items:center;gap:6px;}
-.eyebrow.ok{color:var(--ok);}
-.live-dot{width:7px;height:7px;background:var(--ok);border-radius:99px;animation:pls 2s ease-in-out infinite;}
-@keyframes pls{0%,100%{opacity:1}50%{opacity:.3}}
+        let finalBytes = bytes;
+        if (entry.compressed) {
+          if (typeof DecompressionStream !== 'undefined') {
+            const ds = new DecompressionStream('gzip');
+            const writer = ds.writable.getWriter();
+            const reader = ds.readable.getReader();
+            writer.write(bytes);
+            writer.close();
+            const chunks = [];
+            let totalLen = 0;
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              chunks.push(value);
+              totalLen += value.length;
+            }
+            finalBytes = new Uint8Array(totalLen);
+            let offset = 0;
+            for (const chunk of chunks) { finalBytes.set(chunk, offset); offset += chunk.length; }
+          } else {
+            console.warn('DecompressionStream not available, asset ' + uuid + ' may not render');
+          }
+        }
 
-/* ─── TABS ─── */
-.tabs{display:flex;gap:2px;background:var(--surface-2);padding:3px;border-radius:10px;margin-bottom:14px;}
-.tab-btn{
-  flex:1;padding:7px 10px;border-radius:7px;font-size:11.5px;font-weight:700;
-  color:var(--fg-2);background:transparent;border:none;cursor:pointer;
-  transition:all .15s;text-align:center;
-}
-.tab-btn.active{background:var(--surface);color:var(--fg);box-shadow:0 1px 4px rgba(0,0,0,.1);}
+        if (pageSet.has(uuid)) {
+          pageTexts[uuid] = new TextDecoder().decode(finalBytes);
+          return;
+        }
+        if (FONT_MIME.test(entry.mime) && MIME_TOKEN.test(entry.mime)) {
+          // Strict artifact hosts allow font-src data: but not blob:.
+          blobUrls[uuid] = 'data:' + entry.mime + ';base64,' +
+            (entry.compressed ? toBase64(finalBytes) : entry.data);
+        } else {
+          const blob = new Blob([finalBytes], { type: entry.mime });
+          blobUrls[uuid] = URL.createObjectURL(blob);
+          resourceBlobs[blobUrls[uuid]] = blob;
+        }
+      } catch (err) {
+        console.error('Failed to decode asset ' + uuid + ':', err);
+        const blob = new Blob([], { type: entry.mime });
+        blobUrls[uuid] = URL.createObjectURL(blob);
+        resourceBlobs[blobUrls[uuid]] = blob;
+      }
+    }));
 
-/* ─── EMAIL PREVIEW ─── */
-.email-wrap{background:#f3f4f6;border:1px solid #e5e7eb;border-radius:12px;padding:18px;}
-.email-body-text{font-size:13px;font-family:Arial,sans-serif;color:#1f2937;margin-bottom:10px;line-height:1.55;}
-.email-detail-box{
-  background:#fff;border:1px solid #e5e7eb;border-radius:8px;
-  padding:11px 14px;margin-bottom:12px;
-}
-.email-detail-box p{font-size:12.5px;font-family:Arial,sans-serif;color:#1f2937;margin:3px 0;}
-.email-detail-box strong{font-weight:bold;}
-.email-detail-box .loc{color:#2563eb;word-break:break-all;}
-.email-detail-box .loc.plain{color:#374151;}
-.cal-buttons-box{background:#fff;border:1px solid #e5e7eb;border-radius:10px;padding:13px;}
-.cal-btn-row{display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-start;}
-.cal-btn-a{
-  display:inline-flex;align-items:center;gap:6px;
-  border:1px solid #d1d5db;border-radius:8px;padding:8px 13px;
-  text-decoration:none;color:#1f2937;font-family:Arial,sans-serif;
-  font-size:12px;font-weight:bold;background:#fff;cursor:pointer;
-  white-space:nowrap;transition:border-color .15s;
-}
-.cal-btn-a:hover{border-color:#9ca3af;}
+    const extResEl = document.querySelector('script[type="__bundler/ext_resources"]');
+    const extResources = extResEl ? JSON.parse(extResEl.textContent) : [];
+    const resourceMap = {};
+    for (const entry of extResources) {
+      if (blobUrls[entry.uuid]) resourceMap[entry.id] = blobUrls[entry.uuid];
+    }
 
-/* ─── LINKS GRID ─── */
-.links-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-@media(max-width:480px){.links-grid{grid-template-columns:1fr;}}
-.link-item{
-  background:var(--surface-2);border:1px solid var(--border);border-radius:10px;
-  padding:9px 12px;display:flex;align-items:center;justify-content:space-between;gap:8px;
-}
-.link-name{font-size:12px;font-weight:700;display:flex;align-items:center;gap:7px;min-width:0;}
-.dot{width:7px;height:7px;border-radius:99px;flex-shrink:0;}
-.copy-link{font-size:11px;font-weight:700;color:var(--accent);display:flex;align-items:center;gap:4px;cursor:pointer;border:none;background:none;padding:0;flex-shrink:0;font-family:'Fraunces',Georgia,serif;}
-.copy-link:hover{text-decoration:underline;}
-.copy-link svg{width:12px;height:12px;}
+    // Artifact-host CSP (connect-src 'self') refuses fetch() of blob: URLs —
+    // consumers read these Blobs directly. Survives the swap like the error sink.
+    window.__resourceBlobs = resourceBlobs;
 
-/* ─── CODE BLOCK ─── */
-.code-block{
-  background:#08101e;color:#adbdcf;border-radius:10px;padding:14px;
-  font-family:'Fira Code','Consolas',monospace;font-size:11px;line-height:1.65;
-  overflow-x:auto;max-height:220px;white-space:pre;
-  border:1px solid #162034;
-}
+    setStatus('Rendering...');
+    // Page uuids have no blob here — they ride inside about:blank#<uuid>
+    // frame markers the pass below resolves after the swap.
+    for (const uuid of uuids) {
+      if (pageSet.has(uuid)) continue;
+      template = template.split(uuid).join(blobUrls[uuid]);
+    }
 
-/* ─── ICS EXPAND ─── */
-.ics-raw{
-  display:none;background:var(--surface-2);border:1px dashed var(--border);
-  border-radius:8px;padding:10px 12px;font-family:'Fira Code','Consolas',monospace;
-  font-size:10.5px;color:var(--fg-2);white-space:pre;overflow-x:auto;max-height:140px;
-}
-.ics-raw.show{display:block;}
-.info-row{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-top:12px;border-top:1px solid var(--border);
-  font-size:12px;color:var(--fg-2);gap:10px;flex-wrap:wrap;
-}
+    // Strip integrity + crossorigin — blob URLs from a file:// document inherit
+    // a null origin, so crossorigin forces a CORS fetch that SRI then rejects.
+    // The manifest bytes are ours; SRI protects against CDN compromise, not this.
+    // appifacts: only on tags now pointing at OUR blob: URLs. A reference the
+    // bundler left live-fetched (an absolute x-import, a runtime dependency it
+    // could not embed, an authored external script) keeps the pin it was
+    // written with: that fetch is exactly what SRI protects. (A crossorigin
+    // on a parent whose child carries the blob — <video crossorigin><source>
+    // — is left alone too; the attribute is then the author's to drop.)
+    template = template.replace(/<[a-z][^>]*>/gi, (tag) => /\s(?:src|href|srcset|poster|data|xlink:href)="blob:/i.test(tag) ? tag.replace(/\s+integrity="[^"]*"/gi, '').replace(/\s+crossorigin="[^"]*"/gi, '') : tag);
 
-/* ─── PRO LOCK ─── */
-.pro-locked-wrap{position:relative;border-radius:14px;overflow:hidden;}
-.pro-overlay{
-  position:absolute;inset:0;
-  background:color-mix(in srgb,var(--surface) 82%,transparent);
-  backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
-  border-radius:14px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:9px;z-index:5;
-  cursor:pointer;
-}
-.pro-overlay:hover .unlock-btn{background:var(--accent-h);}
-.pro-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:var(--pro);color:#fff;font-size:10px;font-weight:800;
-  padding:3px 8px;border-radius:99px;letter-spacing:.5px;text-transform:uppercase;
-  font-family:'Fraunces',Georgia,serif;
-}
-.pro-badge svg{width:10px;height:10px;}
-.pro-label{font-size:13px;font-weight:800;color:var(--fg);font-family:'Fraunces',Georgia,serif;text-align:center;}
-.pro-desc{font-size:11px;color:var(--fg-2);text-align:center;max-width:200px;line-height:1.4;}
-.unlock-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  background:var(--accent);color:#fff;border:none;cursor:pointer;
-  padding:7px 16px;border-radius:9px;font-size:12px;font-weight:700;
-  font-family:'Fraunces',Georgia,serif;transition:background .15s;
-}
+    const resourceScript = '<script>window.__resources = ' +
+      JSON.stringify(resourceMap).replace(/<\//g, '<\\/') +
+      ';</' + 'script>';
+    // Inject after <head> so the DOCTYPE stays first; prepending the script
+    // would push the parser into quirks mode. DOMParser always emits a <head>
+    // (synthesizing one if the source HTML omitted it) but may carry
+    // attributes through, so match the full opening tag. slice() rather than
+    // replace() keeps us clear of $-pattern substitution in resourceScript.
+    const headOpen = template.match(/<head[^>]*>/i);
+    if (headOpen) {
+      const i = headOpen.index + headOpen[0].length;
+      template = template.slice(0, i) + resourceScript + template.slice(i);
+    }
 
-/* ─── UPGRADE BANNER ─── */
-.upgrade-banner{
-  background:linear-gradient(135deg,var(--pro-sub),var(--surface));
-  border:1px solid var(--pro-border);border-radius:14px;padding:14px 16px;
-  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
-}
-.upgrade-banner h4{font-size:13px;font-weight:800;color:var(--pro);}
-.upgrade-banner p{font-size:11px;color:var(--fg-2);margin-top:2px;}
+    // Parse the template and swap the root element. Scripts inserted via
+    // DOMParser/replaceWith are inert per spec — re-create each with
+    // createElement so they execute, awaiting onload for src scripts to
+    // preserve ordering (React before ReactDOM before Babel before text/babel).
+    const doc = new DOMParser().parseFromString(template, 'text/html');
+    document.documentElement.replaceWith(doc.documentElement);
 
-/* ─── TOAST ─── */
-#toasts{
-  position:fixed;
-  bottom:max(18px,env(safe-area-inset-bottom,0px));
-  right:max(18px,env(safe-area-inset-right,0px));
-  z-index:999;display:flex;flex-direction:column;gap:8px;pointer-events:none;
-  max-width:min(340px,calc(100vw - 36px));
-}
-.toast{
-  display:flex;align-items:center;gap:9px;
-  padding:10px 14px;border-radius:12px;border:1px solid;
-  font-size:12.5px;font-weight:700;font-family:'Fraunces',Georgia,serif;
-  backdrop-filter:blur(10px);box-shadow:0 4px 20px rgba(0,0,0,.22);
-  transform:translateY(8px);opacity:0;transition:all .25s cubic-bezier(.34,1.56,.64,1);
-  pointer-events:auto;
-}
-.toast svg{width:15px;height:15px;flex-shrink:0;}
-.toast.show{transform:translateY(0);opacity:1;}
-.toast.ok{background:color-mix(in srgb,var(--ok-sub) 94%,transparent);border-color:color-mix(in srgb,var(--ok) 28%,transparent);color:var(--ok);}
-.toast.info{background:color-mix(in srgb,var(--accent-sub) 94%,transparent);border-color:color-mix(in srgb,var(--accent) 28%,transparent);color:var(--accent);}
-.toast.err{background:color-mix(in srgb,var(--danger) 9%,var(--surface));border-color:color-mix(in srgb,var(--danger) 28%,transparent);color:var(--danger);}
+    // Resolve page-frame markers: mint this document's own blob for each
+    // framed page — from local text when this is the root, otherwise by
+    // asking the direct parent over the relay protocol above. An
+    // unanswered request leaves the frame on about:blank, the same
+    // degraded state as a refused embed.
+    {
+      const MARKER = /^about:blank#([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})(#.*)?$/;
+      const needed = [];
+      for (const el of Array.from(document.querySelectorAll('iframe'))) {
+        const m = MARKER.exec(el.getAttribute('src') || '');
+        if (!m) continue;
+        const text = pageTexts[m[1]];
+        if (typeof text === 'string') {
+          mountPage(el, m[2] || '', text);
+        } else if (window.parent !== window && !isPageRoot) {
+          const had = pendingFrames[m[1]];
+          (pendingFrames[m[1]] = had || []).push({ el: el, frag: m[2] || '' });
+          if (!had) needed.push(m[1]);
+        }
+      }
+      for (const uuid of needed) {
+        window.parent.postMessage({ __bundler_need: uuid }, OWN_TARGET);
+      }
+    }
 
-/* ─── MODALS ─── */
-.modal-bg{
-  display:none;position:fixed;inset:0;z-index:60;
-  background:rgba(0,0,0,.55);backdrop-filter:blur(5px);
-  align-items:center;justify-content:center;
-  padding:max(16px,env(safe-area-inset-left,0px));
-}
-.modal-bg.open{display:flex;}
-.modal{
-  background:var(--surface);border:1px solid var(--border);border-radius:20px;
-  max-width:520px;width:100%;padding:24px;
-  box-shadow:0 30px 70px rgba(0,0,0,.3);max-height:90vh;overflow-y:auto;
-}
-.modal-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border);}
-.modal-title{font-size:15px;font-weight:800;display:flex;align-items:center;gap:8px;}
-.modal-title svg{width:16px;height:16px;color:var(--accent);}
-.close-btn{padding:6px;border-radius:8px;color:var(--fg-3);background:none;border:none;cursor:pointer;display:flex;}
-.close-btn:hover{background:var(--surface-2);color:var(--fg);}
-.close-btn svg{width:16px;height:16px;}
-
-/* provider grid */
-.prov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
-.prov-tab{
-  border:1.5px solid var(--border);border-radius:12px;padding:12px 8px;
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  font-size:11px;font-weight:700;color:var(--fg-2);cursor:pointer;
-  background:var(--surface-2);transition:all .15s;opacity:.65;
-}
-.prov-tab:hover{opacity:1;}
-.prov-tab.sel{border-color:var(--accent);background:var(--accent-sub);color:var(--fg);opacity:1;}
-.prov-tab svg{width:20px;height:20px;}
-
-/* pricing */
-.price-grid{display:grid;grid-template-columns:1fr;gap:10px;}
-@media(min-width:500px){.price-grid{grid-template-columns:repeat(3,1fr);}}
-.price-card{
-  border:1.5px solid var(--border);border-radius:14px;padding:16px;
-  display:flex;flex-direction:column;gap:10px;
-}
-.price-card.featured{border-color:var(--accent);background:var(--accent-sub);}
-.plan-name{font-size:12px;font-weight:800;color:var(--fg-2);text-transform:uppercase;letter-spacing:.6px;}
-.plan-price{font-size:26px;font-weight:800;font-variant-numeric:tabular-nums;line-height:1;}
-.plan-price small{font-size:13px;font-weight:500;color:var(--fg-2);}
-.plan-feats{display:flex;flex-direction:column;gap:6px;}
-.plan-feat{font-size:11px;color:var(--fg-2);display:flex;align-items:flex-start;gap:6px;}
-.plan-feat svg{width:12px;height:12px;color:var(--ok);flex-shrink:0;margin-top:1px;}
-.plan-feat.lock svg{color:var(--fg-3);}
-.price-sep{height:1px;background:var(--border);margin:4px 0;}
-.plan-note{font-size:10.5px;color:var(--fg-3);}
-
-/* brand customizer preview */
-.brand-preview{border:1.5px solid var(--border);border-radius:10px;padding:12px;background:var(--surface-2);opacity:.55;pointer-events:none;}
-.color-swatches{display:flex;gap:7px;flex-wrap:wrap;}
-.swatch{width:28px;height:28px;border-radius:7px;border:2px solid var(--border);cursor:pointer;}
-.swatch.active{border-color:var(--fg);outline:2px solid var(--fg);outline-offset:2px;}
-.style-pills{display:flex;gap:6px;}
-.style-pill{padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700;border:1.5px solid var(--border);cursor:pointer;color:var(--fg-2);}
-.style-pill.active{border-color:var(--accent);background:var(--accent-sub);color:var(--accent);}
-
-/* misc helpers */
-.divider{height:1px;background:var(--border);}
-.flex-between{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;}
-.status-live{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--ok);background:var(--ok-sub);padding:3px 9px;border-radius:99px;}
-.muted{color:var(--fg-2);}
-.small{font-size:11px;}
-
-@media(max-width:640px){
-  .card{padding:16px;}
-  .header-inner{height:54px;}
-  .usage-pill{display:none;}
-  .logo p{display:none;}
-}
-@media(prefers-reduced-motion:reduce){
-  .live-dot{animation:none;}
-  .toast{transition:opacity .15s;}
-}
-</style>
-
-<!-- ─── HEADER ─── -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="logo">
-      <div class="logo-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="16" r="2" fill="currentColor" stroke="none"/></svg>
-      </div>
-      <div>
-        <h1>CalLink Studio</h1>
-        <p>Add-to-Calendar Generator &amp; Email Sync</p>
-      </div>
-    </div>
-
-    <div class="usage-pill" title="3 of 10 free events used this month">
-      <div class="usage-bar"><div class="usage-bar-fill"></div></div>
-      <span>3 / 10 free</span>
-    </div>
-
-    <div class="header-acts">
-      <button class="btn btn-pro btn-sm" onclick="openPricing()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Upgrade
-      </button>
-      <button class="btn btn-ghost btn-sm" onclick="openSyncModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-        Sync Calendar
-      </button>
-      <button class="btn btn-ghost btn-icon" id="themeBtn" title="Toggle theme" onclick="toggleTheme()">
-        <svg id="moonIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <svg id="sunIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
-      <button class="btn btn-ok btn-sm" onclick="copyVisual()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        Copy Buttons
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- ─── TOAST CONTAINER ─── -->
-<div id="toasts"></div>
-
-<!-- ─── SYNC MODAL ─── -->
-<div class="modal-bg" id="syncModal">
-  <div class="modal">
-    <div class="modal-hd">
-      <span class="modal-title">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Connect Your Calendar
-      </span>
-      <button class="close-btn" onclick="closeSyncModal()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="space-4">
-      <p class="small muted">Paste your calendar's public iCal/subscription URL to pull upcoming events automatically.</p>
-      <div class="prov-grid">
-        <button class="prov-tab sel" id="provBtn-google" onclick="selectProv('google')">
-          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#fff"/><rect y="0" width="48" height="10" rx="6" fill="#EA4335"/><rect y="6" width="48" height="4" fill="#EA4335"/><rect x="6" y="14" width="9" height="9" rx="1" fill="#4285F4"/><rect x="19.5" y="14" width="9" height="9" rx="1" fill="#FBBC05"/><rect x="33" y="14" width="9" height="9" rx="1" fill="#34A853"/><rect x="6" y="27" width="9" height="9" rx="1" fill="#34A853"/><rect x="19.5" y="27" width="9" height="9" rx="1" fill="#4285F4"/><rect x="33" y="27" width="9" height="9" rx="1" fill="#EA4335"/><circle cx="33" cy="42" r="5" fill="#EA4335"/><circle cx="15" cy="42" r="5" fill="#4285F4"/></svg>
-          Google
-        </button>
-        <button class="prov-tab" id="provBtn-outlook" onclick="selectProv('outlook')">
-          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#0078D4"/><rect x="4" y="4" width="40" height="40" rx="4" fill="#0078D4"/><path d="M6 12a4 4 0 0 1 4-4h12v32H10a4 4 0 0 1-4-4V12z" fill="#fff" opacity=".15"/><path d="M10 14h10v20H10a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="#fff"/><ellipse cx="15" cy="24" rx="4.5" ry="5.5" fill="#0078D4"/><path d="M22 14h18v4H22zm0 7h18v4H22zm0 7h18v4H22z" fill="#fff"/></svg>
-          Outlook
-        </button>
-        <button class="prov-tab" id="provBtn-icloud" onclick="selectProv('icloud')">
-          <svg width="18" height="18" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="1.5"/><rect y="0" width="48" height="13" rx="6" fill="#F2463A"/><rect y="7" width="48" height="6" fill="#F2463A"/><rect x="10" y="0" width="4" height="7" rx="2" fill="#7b0000"/><rect x="34" y="0" width="4" height="7" rx="2" fill="#7b0000"/><text x="24" y="34" font-family="Arial,sans-serif" font-size="15" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle" letter-spacing="1">SUN</text></svg>
-          iCloud
-        </button>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Public iCal Feed URL</label>
-        <input type="url" id="feedUrl" class="form-input" placeholder="https://calendar.google.com/calendar/ical/…/basic.ics"/>
-        <span class="small muted">Google Calendar → Settings → "Integrate calendar" → Public address in iCal format</span>
-      </div>
-      <div style="display:flex;justify-content:flex-end;gap:8px;padding-top:4px;">
-        <button class="btn btn-ghost btn-sm" onclick="closeSyncModal()">Cancel</button>
-        <button class="btn btn-primary btn-sm" onclick="fetchFeed()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-          Fetch &amp; Sync
-        </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── PRICING MODAL ─── -->
-<div class="modal-bg" id="pricingModal">
-  <div class="modal">
-    <div class="modal-hd">
-      <span class="modal-title">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Plans &amp; Pricing
-      </span>
-      <button class="close-btn" onclick="closePricing()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="price-grid">
-      <!-- Free -->
-      <div class="price-card">
-        <div class="plan-name">Free</div>
-        <div class="plan-price">$0 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>10 events / month</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google, Outlook, iCloud</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ICS copy &amp; HTML snippet</div>
-          <div class="plan-feat lock"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>No Yahoo / Office 365</div>
-          <div class="plan-feat lock"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>No custom branding</div>
-        </div>
-        <div class="plan-note">Current plan</div>
-      </div>
-      <!-- Pro (featured) -->
-      <div class="price-card featured">
-        <div class="plan-name" style="color:var(--accent)">Pro</div>
-        <div class="plan-price">$5 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited events</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All 4 calendars + Yahoo</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom brand colours &amp; logo</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Click-tracking analytics</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bulk CSV import</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Calendar auto-sync</div>
-        </div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Redirecting to checkout…','info');closePricing()">Start Pro — $5/mo</button>
-      </div>
-      <!-- Agency -->
-      <div class="price-card">
-        <div class="plan-name">Agency</div>
-        <div class="plan-price">$9 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Pro</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>White-label &amp; custom domain</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Team workspace (5 seats)</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>REST API access</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Zapier / Make webhooks</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority support</div>
-        </div>
-        <button class="btn btn-dark" style="width:100%;justify-content:center;" onclick="showToast('Redirecting to checkout…','info');closePricing()">Start Agency — $9/mo</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── MAIN ─── -->
-<main class="main-grid">
-
-  <!-- ═══ LEFT COL ═══ -->
-  <section class="space-4">
-
-    <!-- Live Calendar Stream -->
-    <div class="card live-card">
-      <div class="card-hd">
-        <span class="eyebrow ok">
-          <span class="live-dot"></span>
-          Live Calendar Stream
-        </span>
-        <button class="card-link" onclick="openSyncModal()">Manage Connection</button>
-      </div>
-      <p class="small muted" style="margin-bottom:10px;">Select a synced event to populate the form instantly:</p>
-      <div class="sel-wrap">
-        <select class="synced-sel" id="syncedDrop" onchange="loadSynced()">
-          <option value="0">📅 Strategy Call with Paul OBEIDY (Nov 2, 2026)</option>
-          <option value="1">🚀 Product Launch Webinar (Nov 10, 2026)</option>
-          <option value="2">💬 Knotie AI Pro Onboarding Review (Nov 15, 2026)</option>
-        </select>
-        <svg class="chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      </div>
-    </div>
-
-    <!-- Event Details Form -->
-    <div class="card">
-      <div class="card-hd">
-        <span class="card-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/></svg>
-          Event Details
-        </span>
-        <button class="card-link" onclick="resetForm()">↺ Reset</button>
-      </div>
-
-      <div class="space-4">
-        <!-- Title -->
-        <div class="form-group">
-          <label class="form-label" for="evTitle">Appointment Title <span class="req">*</span></label>
-          <input type="text" id="evTitle" class="form-input" value="Paul OBEIDY – Strategy Meeting" placeholder="e.g. Discovery Call" oninput="updateLinks()" required/>
-        </div>
-
-        <!-- Dates -->
-        <div>
-          <div class="date-grid">
-            <div class="form-group">
-              <label class="form-label" for="evStart">Start <span class="req">*</span></label>
-              <input type="datetime-local" id="evStart" class="form-input" onchange="updateLinks()" required/>
-            </div>
-            <div class="form-group">
-              <label class="form-label" for="evEnd">End <span class="req">*</span></label>
-              <input type="datetime-local" id="evEnd" class="form-input" onchange="updateLinks()" required/>
-            </div>
-          </div>
-          <div style="margin-top:7px;">
-            <span id="durationTag" class="duration-tag">—</span>
-          </div>
-        </div>
-
-        <!-- Timezone -->
-        <div class="form-group">
-          <label class="form-label" for="evTz">Timezone</label>
-          <div class="sel-wrap">
-            <select id="evTz" class="form-sel" onchange="updateLinks()"></select>
-            <svg class="chev" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-        </div>
-
-        <!-- Location -->
-        <div class="form-group">
-          <label class="form-label" for="evLoc">Meeting Link / Location</label>
-          <div class="icon-wrap">
-            <svg class="fi" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <input type="text" id="evLoc" class="form-input" value="https://meet.google.com/abc-defg-hij" placeholder="Google Meet link or physical address" oninput="updateLinks()"/>
-          </div>
-        </div>
-
-        <!-- Description -->
-        <div class="form-group">
-          <label class="form-label" for="evDesc">Description / Notes</label>
-          <textarea id="evDesc" class="form-ta" maxlength="500" oninput="updateLinks();updateCharCount()" placeholder="Add agenda or meeting details…">Your appointment has been scheduled with Knotie AI Pro. Please click a calendar link below to add this event to your calendar.</textarea>
-          <div id="charCount" class="char-counter">158 / 500</div>
-        </div>
-      </div>
-    </div>
-
-  </section>
-
-  <!-- ═══ RIGHT COL ═══ -->
-  <section class="space-4">
-
-    <!-- Email Preview -->
-    <div class="card">
-      <div class="card-hd">
-        <span class="card-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-          Live Email Preview
-        </span>
-        <span class="status-live">
-          <span class="live-dot"></span>
-          Auto-updating
-        </span>
-      </div>
-
-      <!-- Simulated email body -->
-      <div class="email-wrap">
-        <p class="email-body-text">Hi Paul OBEIDY,</p>
-        <p class="email-body-text" style="margin-bottom:0;">Your appointment has been confirmed. Here are the details:</p>
-
-        <div class="email-detail-box">
-          <p><strong>Title:</strong> <span id="pvTitle">Paul OBEIDY – Strategy Meeting</span></p>
-          <p><strong>Date &amp; Time:</strong> <span id="pvDateTime">Loading…</span></p>
-          <p><strong>Location:</strong> <span id="pvLoc" class="loc">https://meet.google.com/abc-defg-hij</span></p>
-        </div>
-
-        <p style="font-family:Arial,sans-serif;font-size:13px;font-weight:bold;color:#1f2937;margin-bottom:8px;">Add to Calendar</p>
-        <div class="cal-buttons-box" id="calButtonsRich">
-          <div class="cal-btn-row">
-            <a id="btnGoogle" href="#" target="_blank" class="cal-btn-a">
-              <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="10" rx="6" fill="#EA4335"/><rect y="6" width="48" height="4" fill="#EA4335"/><rect x="6" y="14" width="9" height="9" rx="1" fill="#4285F4"/><rect x="19.5" y="14" width="9" height="9" rx="1" fill="#FBBC05"/><rect x="33" y="14" width="9" height="9" rx="1" fill="#34A853"/><rect x="6" y="27" width="9" height="9" rx="1" fill="#34A853"/><rect x="19.5" y="27" width="9" height="9" rx="1" fill="#4285F4"/><rect x="33" y="27" width="9" height="9" rx="1" fill="#EA4335"/><circle cx="33" cy="42" r="5" fill="#EA4335"/><circle cx="15" cy="42" r="5" fill="#4285F4"/></svg>
-              Google Calendar
-            </a>
-            <a id="btnOutlook" href="#" target="_blank" class="cal-btn-a">
-              <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#0078D4"/><path d="M10 14h10v20H10a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="#fff"/><ellipse cx="15" cy="24" rx="4.5" ry="5.5" fill="#0078D4"/><path d="M22 14h18v4H22zm0 7h18v4H22zm0 7h18v4H22z" fill="#fff"/></svg>
-              Outlook
-            </a>
-            <a id="btnOffice" href="#" target="_blank" class="cal-btn-a">
-              <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#0078D4"/><rect x="6" y="8" width="16" height="32" rx="2" fill="#fff"/><rect x="14" y="4" width="16" height="32" rx="2" fill="#50B7F5" opacity=".9"/><rect x="22" y="8" width="16" height="32" rx="2" fill="#fff" opacity=".85"/><path d="M10 14h8v4h-8zm0 7h8v4h-8zm0 7h8v4h-8z" fill="#0078D4" opacity=".3"/><path d="M26 12h8v4h-8zm0 7h8v4h-8zm0 7h8v4h-8z" fill="#0078D4" opacity=".3"/></svg>
-              Office 365
-            </a>
-            <a id="btnYahoo" href="#" target="_blank" class="cal-btn-a">
-              <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#6001D2"/><path d="M8 10h10l8 14 8-14h10L30 32v10h-10V32L8 10z" fill="#fff"/></svg>
-              Yahoo
-            </a>
-            <a id="btnApple" href="#" class="cal-btn-a" onclick="appleCalClick(event)" title="Click to copy ICS — save as event.ics and open in Apple Calendar / iCal">
-              <svg width="16" height="16" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><rect width="48" height="48" rx="6" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="12" rx="6" fill="#F2463A"/><rect y="7" width="48" height="5" fill="#F2463A"/><rect x="10" y="0" width="4" height="8" rx="2" fill="#7b0000"/><rect x="34" y="0" width="4" height="8" rx="2" fill="#7b0000"/><text x="24" y="35" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle" letter-spacing="1">SUN</text></svg>
-              Apple
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:12px;">
-        <button class="btn btn-ok" style="width:100%;justify-content:center;" onclick="copyVisual()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy Buttons to Clipboard (paste directly into Gmail / Outlook)
-        </button>
-      </div>
-    </div>
-
-    <!-- Brand Customizer (Pro) -->
-    <div class="card">
-      <div class="card-hd">
-        <span class="card-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10.5" cy="19.5" r="2.5"/><path d="M13.5 9L19 10.5M13.5 9L10.5 17M6 14.5L10.5 17M19 10.5L10.5 17"/></svg>
-          Brand Customizer
-        </span>
-        <span class="pro-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Pro</span>
-      </div>
-      <div class="pro-locked-wrap">
-        <div class="brand-preview space-3">
-          <div class="form-group">
-            <label class="form-label">Button Colour</label>
-            <div class="color-swatches">
-              <div class="swatch active" style="background:#2563eb;"></div>
-              <div class="swatch" style="background:#059669;"></div>
-              <div class="swatch" style="background:#7c3aed;"></div>
-              <div class="swatch" style="background:#dc2626;"></div>
-              <div class="swatch" style="background:#0f172a;"></div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Button Style</label>
-            <div class="style-pills">
-              <div class="style-pill active">Outlined</div>
-              <div class="style-pill">Filled</div>
-              <div class="style-pill">Pill</div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label class="form-label">Logo URL</label>
-            <input class="form-input" placeholder="https://yoursite.com/logo.png" readonly/>
-          </div>
-        </div>
-        <div class="pro-overlay" onclick="openPricing()">
-          <span class="pro-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pro Feature</span>
-          <div class="pro-label">Custom Branding</div>
-          <div class="pro-desc">Match button colours, style &amp; logo to your brand.</div>
-          <button class="unlock-btn">Unlock with Pro — $5/mo</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Direct Links -->
-    <div class="card">
-      <div class="card-hd">
-        <span class="card-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-          Direct Calendar URLs
-        </span>
-      </div>
-      <div class="links-grid">
-        <div class="link-item">
-          <span class="link-name"><span class="dot" style="background:#4285F4;"></span>Google</span>
-          <button class="copy-link" onclick="copyLink('google','Google link copied!')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy
-          </button>
-        </div>
-        <div class="link-item">
-          <span class="link-name"><span class="dot" style="background:#0072C6;"></span>Outlook Web</span>
-          <button class="copy-link" onclick="copyLink('outlook','Outlook link copied!')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy
-          </button>
-        </div>
-        <div class="link-item">
-          <span class="link-name"><span class="dot" style="background:#0078D4;"></span>Office 365</span>
-          <button class="copy-link" onclick="copyLink('office365','Office 365 link copied!')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy
-          </button>
-        </div>
-        <div class="link-item">
-          <span class="link-name"><span class="dot" style="background:#6001D2;"></span>Yahoo</span>
-          <button class="copy-link" onclick="copyLink('yahoo','Yahoo link copied!')">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            Copy
-          </button>
-        </div>
-      </div>
-
-      <!-- ICS section -->
-      <div class="info-row">
-        <span>Need an <strong>.ics</strong> file for Apple / Outlook Desktop?</span>
-        <button class="btn btn-ghost btn-sm" onclick="toggleIcs()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy ICS
-        </button>
-      </div>
-      <div id="icsRaw" class="ics-raw"></div>
-      <div id="icsInstructions" style="display:none;" class="small muted" style="margin-top:6px;">
-        Paste into a text editor, save as <strong>event.ics</strong>, then open with your calendar app.
-      </div>
-    </div>
-
-    <!-- HTML Code Snippet -->
-    <div class="card">
-      <div class="card-hd">
-        <span class="card-title">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-          Email-Safe HTML Snippet
-        </span>
-        <button class="btn btn-primary btn-sm" onclick="copyHtml()">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          Copy HTML
-        </button>
-      </div>
-      <pre id="htmlOut" class="code-block"></pre>
-    </div>
-
-  </section>
-
-</main>
-
-<script>
-// ─── STATE ───
-const links = {google:'',outlook:'',office365:'',yahoo:'',apple:'',ics:''};
-const MOCK = [
-  {title:"Paul OBEIDY – Strategy Meeting",start:"2026-11-02T09:00",end:"2026-11-02T10:00",tz:"Australia/Sydney",loc:"https://meet.google.com/abc-defg-hij",desc:"Your appointment has been scheduled with Knotie AI Pro. Please click a calendar link below to add this event to your calendar."},
-  {title:"Product Launch Webinar",start:"2026-11-10T14:00",end:"2026-11-10T15:00",tz:"Australia/Sydney",loc:"https://zoom.us/j/987654321",desc:"Join our quarterly product roadmap reveal."},
-  {title:"Knotie AI Pro Onboarding Review",start:"2026-11-15T11:30",end:"2026-11-15T12:00",tz:"Australia/Sydney",loc:"https://meet.google.com/xyz-1234-890",desc:"1-on-1 walkthrough of your automation dashboard."}
-];
-let icsOpen = false;
-let currentTheme = null; // null = system
-
-// ─── INIT ───
-window.addEventListener('load', () => {
-  populateTz();
-  document.getElementById('evStart').value = '2026-11-02T09:00';
-  document.getElementById('evEnd').value   = '2026-11-02T10:00';
-  updateCharCount();
-  updateLinks();
+    const dead = Array.from(document.scripts);
+    for (const old of dead) {
+      const s = document.createElement('script');
+      for (const a of old.attributes) s.setAttribute(a.name, a.value);
+      s.textContent = old.textContent;
+      // text/babel scripts with a src: read and inline. transformScriptTags
+      // does XHR against the src, but blob:null/ from a file:// origin is
+      // silently dropped. Inlining makes it a plain inline babel script,
+      // which transformScriptTags handles unconditionally.
+      if ((s.type === 'text/babel' || s.type === 'text/jsx') && s.src) {
+        const pre = resourceBlobs[s.src.split('#')[0]];
+        s.textContent = pre ? await pre.text() : await (await fetch(s.src)).text();
+        s.removeAttribute('src');
+      }
+      const p = s.src ? new Promise(function(r) { s.onload = s.onerror = r; }) : null;
+      old.replaceWith(s);
+      if (p) await p;
+    }
+    // Babel standalone auto-transforms type=text/babel on DOMContentLoaded,
+    // which fired before we swapped the document. Trigger manually if present.
+    if (window.Babel && typeof window.Babel.transformScriptTags === 'function') {
+      window.Babel.transformScriptTags();
+    }
+  } catch (err) {
+    setStatus('Error unpacking: ' + err.message);
+    console.error('Bundle unpack error:', err);
+  }
 });
 
-function populateTz() {
-  const tzs = [
-    'Australia/Sydney','Australia/Melbourne','Australia/Brisbane','Australia/Perth',
-    'UTC','America/New_York','America/Chicago','America/Los_Angeles',
-    'America/Denver','America/Toronto','Europe/London','Europe/Paris',
-    'Europe/Berlin','Asia/Tokyo','Asia/Singapore','Asia/Dubai','Pacific/Auckland'
-  ];
-  const sel = document.getElementById('evTz');
-  tzs.forEach(t => { const o = document.createElement('option'); o.value = t; o.textContent = t; sel.appendChild(o); });
-  sel.value = 'Australia/Sydney';
-}
+  </script>
 
-// ─── LOAD SYNCED ───
-function loadSynced() {
-  const ev = MOCK[parseInt(document.getElementById('syncedDrop').value) || 0];
-  if (!ev) return;
-  document.getElementById('evTitle').value = ev.title;
-  document.getElementById('evStart').value = ev.start;
-  document.getElementById('evEnd').value   = ev.end;
-  document.getElementById('evTz').value    = ev.tz;
-  document.getElementById('evLoc').value   = ev.loc;
-  document.getElementById('evDesc').value  = ev.desc;
-  updateCharCount();
-  updateLinks();
-  showToast(`"${ev.title}" loaded`, 'ok');
-}
+  <script type="__bundler/manifest">
+{}
+  </script>
 
-// ─── LINK BUILDER ───
-function toUTC(dtStr) {
-  if (!dtStr) return '';
-  const d = new Date(dtStr);
-  return d.toISOString().replace(/[-:]|\.\d{3}/g,'').slice(0,15) + 'Z';
-}
+  <script type="__bundler/ext_resources">
+[]
+  </script>
 
-function formatDisplay(startStr, tz) {
-  if (!startStr) return 'Select date & time';
-  try {
-    const d = new Date(startStr);
-    return d.toLocaleString('en-AU', {weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'}) + ' (' + tz + ')';
-  } catch { return startStr; }
-}
+  <script type="__bundler/page_order">
+[]
+  </script>
 
-function calcDuration(s, e) {
-  if (!s || !e) return null;
-  const diff = new Date(e) - new Date(s);
-  if (diff <= 0) return null;
-  const mins = Math.round(diff/60000);
-  if (mins < 60) return `${mins} min`;
-  const h = Math.floor(mins/60), m = mins%60;
-  return m ? `${h}h ${m}m` : `${h}h`;
-}
-
-function updateLinks() {
-  const title = document.getElementById('evTitle').value.trim() || 'Scheduled Appointment';
-  const s     = document.getElementById('evStart').value;
-  const e     = document.getElementById('evEnd').value;
-  const tz    = document.getElementById('evTz').value;
-  const loc   = document.getElementById('evLoc').value.trim();
-  const desc  = document.getElementById('evDesc').value.trim();
-
-  // Duration tag
-  const dur = calcDuration(s, e);
-  const tag = document.getElementById('durationTag');
-  if (!dur) { tag.textContent = 'End must be after start'; tag.className = 'duration-tag err'; }
-  else { tag.textContent = `⏱ ${dur}`; tag.className = 'duration-tag'; }
-
-  if (!s || !e) return;
-
-  const us = toUTC(s), ue = toUTC(e);
-  const sIso = new Date(s).toISOString(), eIso = new Date(e).toISOString();
-
-  // Google
-  const gp = new URLSearchParams({action:'TEMPLATE',text:title,dates:`${us}/${ue}`,details:desc,location:loc,ctz:tz});
-  links.google = 'https://calendar.google.com/calendar/render?' + gp;
-
-  // Outlook / Office 365
-  const op = new URLSearchParams({path:'/calendar/action/compose',rru:'addevent',subject:title,startdt:sIso,enddt:eIso,body:desc,location:loc});
-  links.outlook  = 'https://outlook.live.com/calendar/0/deeplink/compose?' + op;
-  links.office365 = 'https://outlook.office.com/calendar/0/deeplink/compose?' + op;
-
-  // Yahoo
-  const yp = new URLSearchParams({v:'60',title,st:us,et:ue,desc,in_loc:loc});
-  links.yahoo = 'https://calendar.yahoo.com/?' + yp;
-
-  // ICS
-  links.ics = [
-    'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CalLink Studio//EN',
-    'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
-    `SUMMARY:${title}`,
-    `DESCRIPTION:${desc.replace(/\n/g,'\\n')}`,
-    `LOCATION:${loc}`,
-    `DTSTART:${us}`,`DTEND:${ue}`,
-    `TZID:${tz}`,
-    'STATUS:CONFIRMED','END:VEVENT','END:VCALENDAR'
-  ].join('\r\n');
-
-  // Update preview
-  document.getElementById('pvTitle').textContent    = title;
-  document.getElementById('pvDateTime').textContent  = formatDisplay(s, tz);
-  const pvLoc = document.getElementById('pvLoc');
-  pvLoc.textContent = loc || 'No location set';
-  pvLoc.className   = loc.startsWith('http') ? 'loc' : 'loc plain';
-
-  document.getElementById('btnGoogle').href  = links.google;
-  document.getElementById('btnOutlook').href = links.outlook;
-  document.getElementById('btnOffice').href  = links.office365;
-  document.getElementById('btnYahoo').href   = links.yahoo;
-  // Apple uses ICS — href left as '#', handled by appleCalClick()
-
-  if (icsOpen) document.getElementById('icsRaw').textContent = links.ics;
-  generateHtml(title, links.google, links.outlook, links.office365, links.yahoo, links.ics);
-}
-
-// ─── HTML GENERATOR ───
-function generateHtml(title, gUrl, oUrl, o365, yUrl, icsData) {
-  const btnStyle = 'display:inline-flex;align-items:center;gap:6px;border:1px solid #d1d5db;border-radius:8px;padding:8px 13px;text-decoration:none;color:#1f2937;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background:#fff;';
-  const code = `<!-- Add to Calendar Buttons — CalLink Studio -->
-<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin-bottom:10px;">Add to Calendar</p>
-<table role="presentation" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td style="padding:4px;">
-      <a href="${gUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="9" rx="5" fill="#EA4335"/><rect y="6" width="48" height="3" fill="#EA4335"/><rect x="6" y="14" width="8" height="8" rx="1" fill="#4285F4"/><rect x="20" y="14" width="8" height="8" rx="1" fill="#FBBC05"/><rect x="34" y="14" width="8" height="8" rx="1" fill="#34A853"/><rect x="6" y="26" width="8" height="8" rx="1" fill="#34A853"/><rect x="20" y="26" width="8" height="8" rx="1" fill="#4285F4"/><rect x="34" y="26" width="8" height="8" rx="1" fill="#EA4335"/></svg>
-        Google Calendar
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${oUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#0078D4"/><path d="M10 14h10v20H10a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="#fff"/><ellipse cx="15" cy="24" rx="4" ry="5" fill="#0078D4"/><path d="M22 14h18v4H22zm0 7h18v4H22zm0 7h18v4H22z" fill="#fff"/></svg>
-        Outlook
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${o365}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#0078D4"/><rect x="6" y="8" width="14" height="30" rx="2" fill="#fff" opacity=".9"/><rect x="14" y="4" width="14" height="30" rx="2" fill="#50B7F5" opacity=".85"/><rect x="22" y="8" width="14" height="30" rx="2" fill="#fff" opacity=".8"/></svg>
-        Office 365
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${yUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#6001D2"/><path d="M8 10h10l8 14 8-14h10L30 32v10h-10V32L8 10z" fill="#fff"/></svg>
-        Yahoo
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="data:text/calendar;charset=utf-8,${encodeURIComponent(icsData)}" download="event.ics" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="11" rx="5" fill="#F2463A"/><rect y="7" width="48" height="4" fill="#F2463A"/><rect x="9" y="0" width="4" height="7" rx="2" fill="#7b0000"/><rect x="35" y="0" width="4" height="7" rx="2" fill="#7b0000"/><text x="24" y="36" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">SUN</text></svg>
-        Apple Calendar
-      </a>
-    </td>
-  </tr>
-</table>`;
-  document.getElementById('htmlOut').textContent = code;
-}
-
-// ─── CHAR COUNTER ───
-function updateCharCount() {
-  const ta  = document.getElementById('evDesc');
-  const cnt = document.getElementById('charCount');
-  const len = ta.value.length;
-  cnt.textContent = `${len} / 500`;
-  cnt.className = len > 480 ? 'char-counter over' : len > 400 ? 'char-counter warn' : 'char-counter';
-}
-
-// ─── APPLE CALENDAR CLICK ───
-function appleCalClick(e) {
-  e.preventDefault();
-  if (!links.ics) { showToast('Fill in the event details first.', 'warn'); return; }
-  copyText(links.ics, null);
-  showToast('ICS copied! Open Notes or TextEdit, paste, save as "event.ics", then double-click to add to Apple Calendar.', 'ok');
-}
-
-// ─── ICS TOGGLE ───
-function toggleIcs() {
-  icsOpen = !icsOpen;
-  const box = document.getElementById('icsRaw');
-  const hint = document.getElementById('icsInstructions');
-  if (icsOpen) {
-    box.textContent = links.ics;
-    box.classList.add('show');
-    hint.style.display = 'block';
-    copyText(links.ics, 'ICS content copied — paste into a text editor and save as .ics').catch(()=>{});
-    showToast('ICS copied! Save as event.ics and open in your calendar app.','ok');
-  } else {
-    box.classList.remove('show');
-    hint.style.display = 'none';
-  }
-}
-
-// ─── COPY ───
-async function copyText(text, msg) {
-  try {
-    await navigator.clipboard.writeText(text);
-    if (msg) showToast(msg,'ok');
-  } catch {
-    const ta = document.createElement('textarea');
-    ta.value = text; ta.style.cssText='position:fixed;opacity:0;top:0;left:0;';
-    document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); if (msg) showToast(msg,'ok'); }
-    catch { if (msg) showToast('Copy failed — select text manually','err'); }
-    document.body.removeChild(ta);
-  }
-}
-
-function copyLink(key, msg) { copyText(links[key], msg); }
-function copyHtml() { copyText(document.getElementById('htmlOut').textContent, 'HTML snippet copied!'); }
-
-async function copyVisual() {
-  const el = document.getElementById('calButtonsRich');
-  try {
-    const blob = new Blob([el.innerHTML], {type:'text/html'});
-    await navigator.clipboard.write([new ClipboardItem({'text/html':blob})]);
-    showToast('Rich calendar buttons copied — paste directly into Gmail or Outlook!','ok');
-  } catch {
-    try {
-      const r = document.createRange(); r.selectNodeContents(el);
-      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      document.execCommand('copy'); s.removeAllRanges();
-      showToast('Buttons copied! Paste with Ctrl+V / Cmd+V into your email.','ok');
-    } catch { showToast('Copy failed — use the HTML snippet below instead.','err'); }
-  }
-}
-
-// ─── MODALS ───
-function openSyncModal()  { document.getElementById('syncModal').classList.add('open'); }
-function closeSyncModal() { document.getElementById('syncModal').classList.remove('open'); }
-function openPricing()    { document.getElementById('pricingModal').classList.add('open'); }
-function closePricing()   { document.getElementById('pricingModal').classList.remove('open'); }
-
-document.querySelectorAll('.modal-bg').forEach(m => {
-  m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
-});
-
-// ─── PROVIDER TABS ───
-function selectProv(p) {
-  document.querySelectorAll('.prov-tab').forEach(b => b.classList.remove('sel'));
-  document.getElementById('provBtn-' + p).classList.add('sel');
-}
-
-// ─── FETCH FEED ───
-function fetchFeed() {
-  const url = document.getElementById('feedUrl').value.trim();
-  if (!url) { showToast('Please enter a feed URL','err'); return; }
-  showToast('Fetching calendar events…','info');
-  setTimeout(() => { closeSyncModal(); showToast('Calendar synced! 3 upcoming events loaded.','ok'); }, 1200);
-}
-
-// ─── RESET ───
-function resetForm() {
-  document.getElementById('evTitle').value = 'Paul OBEIDY – Strategy Meeting';
-  document.getElementById('evStart').value = '2026-11-02T09:00';
-  document.getElementById('evEnd').value   = '2026-11-02T10:00';
-  document.getElementById('evTz').value    = 'Australia/Sydney';
-  document.getElementById('evLoc').value   = 'https://meet.google.com/abc-defg-hij';
-  document.getElementById('evDesc').value  = 'Your appointment has been scheduled with Knotie AI Pro. Please click a calendar link below to add this event to your calendar.';
-  document.getElementById('syncedDrop').value = '0';
-  updateCharCount(); updateLinks();
-  showToast('Form reset to defaults','info');
-}
-
-// ─── THEME ───
-function toggleTheme() {
-  const root = document.documentElement;
-  if (!currentTheme) { currentTheme = 'dark'; root.setAttribute('data-theme','dark'); }
-  else if (currentTheme === 'dark') { currentTheme = 'light'; root.setAttribute('data-theme','light'); }
-  else { currentTheme = null; root.removeAttribute('data-theme'); }
-  document.getElementById('moonIcon').style.display = currentTheme === 'dark' ? 'none' : '';
-  document.getElementById('sunIcon').style.display  = currentTheme === 'dark' ? '' : 'none';
-}
-
-// ─── TOAST ───
-function showToast(msg, type='ok') {
-  const icons = {
-    ok:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
-    info:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
-    err: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
-  };
-  const c = document.getElementById('toasts');
-  const t = document.createElement('div');
-  t.className = `toast ${type}`;
-  t.innerHTML = `${icons[type]||icons.ok}<span>${msg}</span>`;
-  c.appendChild(t);
-  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('show')));
-  setTimeout(() => {
-    t.classList.remove('show');
-    setTimeout(() => t.remove(), 300);
-  }, 3600);
-}
-</script>
-
-</body></html>
+  <script type="__bundler/template">
+"<!DOCTYPE html>\n<html><head><meta name=\"hz:slide-selector\" content=\"[data-canvas-width]\"><meta name=\"hz:canvas-width\" content=\"1440\"><meta name=\"hz:canvas-height\" content=\"3500\">\u002Fhead><body data-canvas-width=\"1440\" data-canvas-height=\"3500\" data-document-role=\"page\" data-label=\"Landing Page\"><helmet>\n  <title>CalLink Studio\u002Ftitle>\n  <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n  <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin=\"\">\n  <link href=\"https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap\" rel=\"stylesheet\">\n  <style>\n    /* $preview: {\"width\": 1440, \"height\": 3600} */\n    :root {\n      --bg: #050A16;\n      --surf: #0C1630;\n      --surf2: #111D3C;\n      --border: rgba(255,255,255,0.08);\n      --acc: #4B87FF;\n      --acc2: #8B5CF6;\n      --txt: #F0F4FF;\n      --txt2: #8B9CC4;\n      --txt3: #576B9C;\n    }\n    * { box-sizing: border-box; margin: 0; padding: 0; }\n    body {\n      background: #050A16;\n      color: #F0F4FF;\n      font-family: 'Source Sans 3', system-ui, sans-serif;\n      font-size: 16px;\n      line-height: 1.6;\n      overflow-x: hidden;\n    }\n    .grad {\n      background: linear-gradient(100deg, #4B87FF 0%, #A78BFA 55%, #C084FC 100%);\n      -webkit-background-clip: text;\n      -webkit-text-fill-color: transparent;\n      background-clip: text;\n    }\n\n    /* NAV */\n    .nav {\n      position: sticky; top: 0; z-index: 100;\n      height: 72px;\n      background: rgba(5,10,22,0.88);\n      backdrop-filter: blur(24px);\n      border-bottom: 1px solid rgba(255,255,255,0.08);\n    }\n    .nav-inner {\n      max-width: 1200px; margin: 0 auto;\n      padding: 0 40px; height: 100%;\n      display: flex; align-items: center; gap: 40px;\n    }\n    .logo {\n      display: flex; align-items: center; gap: 10px;\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800; font-size: 20px;\n      color: #F0F4FF; text-decoration: none; flex-shrink: 0;\n    }\n    .logo-icon {\n      width: 34px; height: 34px;\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border-radius: 9px;\n      display: flex; align-items: center; justify-content: center;\n    }\n    .logo-accent { color: #4B87FF; }\n    .nav-links { display: flex; gap: 32px; margin-right: auto; }\n    .nav-links a {\n      color: #8B9CC4; text-decoration: none;\n      font-size: 14px; font-weight: 500; transition: color .2s;\n    }\n    .nav-links a:hover { color: #F0F4FF; }\n    .btn-nav {\n      padding: 9px 22px;\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border-radius: 9px; color: #fff;\n      font-weight: 600; font-size: 14px; text-decoration: none;\n      flex-shrink: 0; letter-spacing: .01em;\n      box-shadow: 0 4px 20px rgba(75,135,255,.3);\n    }\n\n    /* HERO */\n    .hero {\n      padding: 108px 40px 88px;\n      text-align: center;\n      position: relative; overflow: hidden;\n    }\n    .hero-glow {\n      position: absolute; top: -160px; left: 50%;\n      transform: translateX(-50%);\n      width: 900px; height: 900px;\n      background: radial-gradient(circle, rgba(75,135,255,.11) 0%, rgba(139,92,246,.06) 45%, transparent 70%);\n      pointer-events: none;\n    }\n    .hero-inner { max-width: 820px; margin: 0 auto; position: relative; }\n    .badge {\n      display: inline-flex; align-items: center; gap: 8px;\n      padding: 6px 18px;\n      background: rgba(75,135,255,.1);\n      border: 1px solid rgba(75,135,255,.28);\n      border-radius: 100px;\n      font-size: 13px; font-weight: 500; color: #93B8FF;\n      margin-bottom: 28px; letter-spacing: .02em;\n    }\n    .badge-star { color: #93B8FF; }\n    .hero h1 {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800;\n      font-size: 84px; line-height: 1.02;\n      letter-spacing: -.04em; margin-bottom: 24px;\n    }\n    .hero-sub {\n      font-size: 18px; color: #8B9CC4;\n      max-width: 540px; margin: 0 auto 44px; line-height: 1.75;\n    }\n    .hero-ctas {\n      display: flex; gap: 14px; justify-content: center;\n      flex-wrap: wrap; margin-bottom: 52px;\n    }\n    .btn-primary {\n      padding: 15px 30px;\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border-radius: 11px; color: #fff;\n      font-weight: 600; font-size: 15px; text-decoration: none;\n      box-shadow: 0 8px 32px rgba(75,135,255,.38);\n      letter-spacing: .01em;\n    }\n    .btn-secondary {\n      padding: 15px 30px;\n      background: rgba(255,255,255,.06);\n      border: 1px solid rgba(255,255,255,.13);\n      border-radius: 11px; color: #F0F4FF;\n      font-weight: 500; font-size: 15px; text-decoration: none;\n    }\n    .platforms {\n      display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;\n    }\n    .pill {\n      padding: 7px 16px;\n      background: rgba(255,255,255,.04);\n      border: 1px solid rgba(255,255,255,.09);\n      border-radius: 100px; font-size: 13px;\n      color: #8B9CC4; font-weight: 500;\n      display: inline-flex; align-items: center; gap: 7px;\n    }\n    .pill-dot {\n      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;\n    }\n\n    /* MOCKUP */\n    .mockup-section { padding: 0 40px 100px; }\n    .mockup-label {\n      text-align: center; font-size: 12px; font-weight: 600;\n      text-transform: uppercase; letter-spacing: .1em;\n      color: #576B9C; margin-bottom: 24px;\n    }\n    .mockup-wrap {\n      max-width: 1100px; margin: 0 auto;\n      background: #0C1630;\n      border: 1px solid rgba(255,255,255,.1);\n      border-radius: 20px; overflow: hidden;\n      box-shadow: 0 4px 0 rgba(75,135,255,.15), 0 40px 120px rgba(0,0,0,.65), inset 0 1px 0 rgba(255,255,255,.06);\n    }\n    .browser-bar {\n      height: 44px; background: #111D3C;\n      border-bottom: 1px solid rgba(255,255,255,0.08);\n      display: flex; align-items: center; padding: 0 18px; gap: 8px;\n    }\n    .dot { width: 12px; height: 12px; border-radius: 50%; }\n    .dot-r { background: #FF5F57; }\n    .dot-y { background: #FFBE2E; }\n    .dot-g { background: #28C840; }\n    .url-bar {\n      margin: 0 18px; flex: 1; max-width: 380px;\n      height: 26px; background: rgba(255,255,255,.05);\n      border-radius: 6px; display: flex; align-items: center;\n      padding: 0 10px; font-size: 12px; color: #576B9C;\n      gap: 6px;\n    }\n    .app-body { display: grid; grid-template-columns: 1fr 1fr; }\n    .app-form {\n      padding: 28px 32px;\n      border-right: 1px solid rgba(255,255,255,0.08);\n    }\n    .app-form-title {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 700;\n      font-size: 15px; color: #F0F4FF; margin-bottom: 20px;\n    }\n    .field-group { margin-bottom: 14px; }\n    .field-label {\n      font-size: 11px; font-weight: 600; color: #576B9C;\n      text-transform: uppercase; letter-spacing: .07em; margin-bottom: 5px;\n    }\n    .field-input {\n      width: 100%; background: #111D3C;\n      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;\n      padding: 9px 12px; color: #F0F4FF; font-size: 13px;\n      font-family: inherit;\n    }\n    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }\n    .gen-btn {\n      width: 100%; margin-top: 6px;\n      padding: 11px;\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border: none; border-radius: 9px;\n      color: #fff; font-weight: 600; font-size: 14px;\n      cursor: pointer; font-family: inherit;\n      box-shadow: 0 4px 16px rgba(75,135,255,.3);\n    }\n    .app-preview { padding: 28px 32px; }\n    .preview-hd {\n      margin-bottom: 18px;\n      padding-bottom: 16px;\n      border-bottom: 1px solid rgba(255,255,255,0.08);\n    }\n    .preview-event-name {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 700;\n      font-size: 15px; color: #F0F4FF; margin-bottom: 5px;\n    }\n    .preview-event-meta { font-size: 13px; color: #8B9CC4; }\n    .preview-label {\n      font-size: 11px; font-weight: 600; color: #576B9C;\n      text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;\n    }\n    .cal-btns { display: flex; flex-direction: column; gap: 8px; }\n    .cal-btn {\n      display: flex; align-items: center; gap: 10px;\n      padding: 9px 14px;\n      background: #111D3C;\n      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;\n      font-size: 13px; color: #F0F4FF; font-weight: 500;\n      font-family: inherit; cursor: pointer;\n    }\n    .cal-dot {\n      width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0;\n    }\n\n    /* FEATURES */\n    .features { padding: 108px 40px; }\n    .section-eyebrow {\n      text-align: center; font-size: 12px; font-weight: 600;\n      text-transform: uppercase; letter-spacing: .1em;\n      color: #4B87FF; margin-bottom: 10px;\n    }\n    .section-h {\n      text-align: center;\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800;\n      font-size: 46px; letter-spacing: -.03em;\n      margin-bottom: 14px; line-height: 1.05;\n    }\n    .section-p {\n      text-align: center; color: #8B9CC4; font-size: 17px;\n      max-width: 480px; margin: 0 auto 60px; line-height: 1.7;\n    }\n    .feat-grid {\n      max-width: 1100px; margin: 0 auto;\n      display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px;\n    }\n    .feat-card {\n      background: #0C1630;\n      border: 1px solid rgba(255,255,255,0.08);\n      border-radius: 18px; padding: 30px;\n    }\n    .feat-icon {\n      width: 46px; height: 46px;\n      background: rgba(75,135,255,.1);\n      border-radius: 12px;\n      display: flex; align-items: center; justify-content: center;\n      margin-bottom: 18px;\n    }\n    .feat-h {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 700;\n      font-size: 16px; margin-bottom: 9px; color: #F0F4FF;\n    }\n    .feat-p { font-size: 14px; color: #8B9CC4; line-height: 1.65; }\n\n    /* PRICING */\n    .pricing { padding: 108px 40px; }\n    .price-grid {\n      max-width: 1000px; margin: 0 auto;\n      display: grid; grid-template-columns: repeat(3, 1fr);\n      gap: 22px; align-items: start;\n    }\n    .price-card {\n      background: #0C1630; border: 1px solid rgba(255,255,255,0.08);\n      border-radius: 22px; padding: 34px; position: relative;\n    }\n    .price-card.featured {\n      background: linear-gradient(145deg, rgba(75,135,255,.13), rgba(139,92,246,.1));\n      border-color: rgba(75,135,255,.4);\n      box-shadow: 0 0 0 1px rgba(75,135,255,.15), 0 28px 60px rgba(75,135,255,.18);\n    }\n    .feat-badge {\n      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);\n      padding: 4px 18px;\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border-radius: 100px;\n      font-size: 10px; font-weight: 700; color: #fff;\n      white-space: nowrap; text-transform: uppercase; letter-spacing: .06em;\n    }\n    .price-tier {\n      font-size: 11px; font-weight: 600; text-transform: uppercase;\n      letter-spacing: .1em; color: #576B9C; margin-bottom: 8px;\n    }\n    .price-num {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800;\n      font-size: 52px; letter-spacing: -.04em; line-height: 1; margin-bottom: 3px;\n    }\n    .price-period { font-size: 13px; color: #576B9C; margin-bottom: 26px; }\n    .price-div { height: 1px; background: rgba(255,255,255,0.08); margin-bottom: 22px; }\n    .price-feats { list-style: none; display: flex; flex-direction: column; gap: 11px; margin-bottom: 26px; }\n    .price-feats li {\n      display: flex; align-items: center; gap: 10px;\n      font-size: 13.5px; color: #8B9CC4;\n    }\n    .chk {\n      width: 18px; height: 18px; background: rgba(75,135,255,.15);\n      border-radius: 50%; display: flex; align-items: center;\n      justify-content: center; flex-shrink: 0;\n    }\n    .pbtn {\n      display: block; text-align: center; padding: 12px;\n      border-radius: 10px; font-size: 14px; font-weight: 600;\n      text-decoration: none;\n    }\n    .pbtn-outline {\n      background: transparent; border: 1px solid rgba(255,255,255,0.08); color: #8B9CC4;\n    }\n    .pbtn-fill {\n      background: linear-gradient(135deg, #4B87FF, #8B5CF6);\n      border: none; color: #fff;\n      box-shadow: 0 8px 24px rgba(75,135,255,.32);\n    }\n\n    /* CTA */\n    .bottom-cta { padding: 108px 40px; text-align: center; }\n    .cta-box {\n      max-width: 680px; margin: 0 auto;\n      background: linear-gradient(135deg, rgba(75,135,255,.1), rgba(139,92,246,.1));\n      border: 1px solid rgba(75,135,255,.22);\n      border-radius: 28px; padding: 68px 52px;\n      position: relative; overflow: hidden;\n    }\n    .cta-box::before {\n      content: ''; position: absolute; inset: 0;\n      background: radial-gradient(ellipse at top, rgba(75,135,255,.08), transparent 65%);\n      pointer-events: none;\n    }\n    .cta-box h2 {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800;\n      font-size: 44px; letter-spacing: -.03em; margin-bottom: 14px;\n      line-height: 1.08;\n    }\n    .cta-box p { color: #8B9CC4; font-size: 16px; margin-bottom: 34px; line-height: 1.7; }\n\n    /* FOOTER */\n    .footer { padding: 44px 40px; border-top: 1px solid rgba(255,255,255,0.08); }\n    .footer-inner {\n      max-width: 1100px; margin: 0 auto;\n      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;\n    }\n    .footer-logo {\n      font-family: 'Fraunces', Georgia, serif; font-weight: 800;\n      font-size: 17px; color: #F0F4FF;\n    }\n    .footer-logo span { color: #4B87FF; }\n    .footer-copy { font-size: 13px; color: #576B9C; }\n    .footer-links { display: flex; gap: 24px; }\n    .footer-links a { font-size: 13px; color: #576B9C; text-decoration: none; }\n    .footer-links a:hover { color: #8B9CC4; }\n  \u002Fstyle>\n\u002Fhelmet>\n\n<x-dc>\n  <!-- NAV -->\n  <nav class=\"nav\">\n    <div class=\"nav-inner\">\n      <a href=\"#\" class=\"logo\">\n        <div class=\"logo-icon\">\n          <svg width=\"18\" height=\"18\" sc-camel-view-box=\"0 0 18 18\" fill=\"none\">\n            <rect x=\"2\" y=\"3\" width=\"14\" height=\"13\" rx=\"2.5\" stroke=\"white\" stroke-width=\"1.6\">\u002Frect>\n            <path d=\"M2 7.5h14\" stroke=\"white\" stroke-width=\"1.6\">\u002Fpath>\n            <path d=\"M6.5 2v2.5M11.5 2v2.5\" stroke=\"white\" stroke-width=\"1.6\" stroke-linecap=\"round\">\u002Fpath>\n            <rect x=\"5\" y=\"10\" width=\"2.5\" height=\"2.5\" rx=\".5\" fill=\"white\" opacity=\".7\">\u002Frect>\n            <rect x=\"10.5\" y=\"10\" width=\"2.5\" height=\"2.5\" rx=\".5\" fill=\"white\" opacity=\".7\">\u002Frect>\n          \u002Fsvg>\n        \u002Fdiv>\n        CalLink<span class=\"logo-accent\"> Studio\u002Fspan>\n      \u002Fa>\n      <div class=\"nav-links\">\n        <a href=\"#features\">Features\u002Fa>\n        <a href=\"#pricing\">Pricing\u002Fa>\n        <a href=\"#\">Docs\u002Fa>\n        <a href=\"#\">Blog\u002Fa>\n      \u002Fdiv>\n      <a href=\"#\" class=\"btn-nav\">Start Free \u2192\u002Fa>\n    \u002Fdiv>\n  \u002Fnav>\n\n  <!-- HERO -->\n  <section class=\"hero\">\n    <div class=\"hero-glow\">\u002Fdiv>\n    <div class=\"hero-inner\">\n      <div class=\"badge\">\n        <svg width=\"11\" height=\"11\" sc-camel-view-box=\"0 0 12 12\" fill=\"none\"><path d=\"M6 .5L7.4 4.1l3.6.5-2.6 2.5.6 3.5L6 8.9 3 10.6l.6-3.5L1 4.6l3.6-.5L6 .5z\" fill=\"#93B8FF\">\u002Fpath>\u002Fsvg>\n        Add to Calendar Widget\n      \u002Fdiv>\n      <h1>One Link.<br><span class=\"grad\">Every Calendar.\u002Fspan>\u002Fh1>\n      <p class=\"hero-sub\">Beautiful \"Add to Calendar\" buttons for every event. Works with Google, Outlook, Office 365, Yahoo, and Apple Calendar \u2014 instantly.\u002Fp>\n      <div class=\"hero-ctas\">\n        <a href=\"#\" class=\"btn-primary\">Create Your Link \u2014 Free\u002Fa>\n        <a href=\"#\" class=\"btn-secondary\">See Live Demo \u2192\u002Fa>\n      \u002Fdiv>\n      <div class=\"platforms\">\n        <span class=\"pill\" sc-for=\"p of platforms\">\n          <span class=\"pill-dot\" style=\"background: {{p.bg}}\">\u002Fspan>{{p.name}}\n        \u002Fspan>\n      \u002Fdiv>\n    \u002Fdiv>\n  \u002Fsection>\n\n  <!-- MOCKUP -->\n  <section class=\"mockup-section\">\n    <div class=\"mockup-label\">\u2726 Live Preview\u002Fdiv>\n    <div class=\"mockup-wrap\">\n      <div class=\"browser-bar\">\n        <div class=\"dot dot-r\">\u002Fdiv>\n        <div class=\"dot dot-y\">\u002Fdiv>\n        <div class=\"dot dot-g\">\u002Fdiv>\n        <div class=\"url-bar\">\n          <svg width=\"10\" height=\"10\" sc-camel-view-box=\"0 0 12 12\" fill=\"none\" opacity=\".5\"><path d=\"M6 1a5 5 0 100 10A5 5 0 006 1zm0 9a4 4 0 110-8 4 4 0 010 8z\" fill=\"currentColor\">\u002Fpath><path d=\"M6 5v4M6 3.5v.5\" stroke=\"currentColor\" stroke-width=\"1.2\" stroke-linecap=\"round\">\u002Fpath>\u002Fsvg>\n          callink.studio/create\n        \u002Fdiv>\n      \u002Fdiv>\n      <div class=\"app-body\">\n        <div class=\"app-form\">\n          <div class=\"app-form-title\">Create Calendar Link\u002Fdiv>\n          <div class=\"field-group\">\n            <div class=\"field-label\">Event Name\u002Fdiv>\n            <input class=\"field-input\" type=\"text\" value=\"Product Launch Webinar\" readonly=\"\">\n          \u002Fdiv>\n          <div class=\"field-row\">\n            <div class=\"field-group\">\n              <div class=\"field-label\">Date\u002Fdiv>\n              <input class=\"field-input\" type=\"text\" value=\"Nov 15, 2026\" readonly=\"\">\n            \u002Fdiv>\n            <div class=\"field-group\">\n              <div class=\"field-label\">Time\u002Fdiv>\n              <input class=\"field-input\" type=\"text\" value=\"2:00 PM PST\" readonly=\"\">\n            \u002Fdiv>\n          \u002Fdiv>\n          <div class=\"field-group\">\n            <div class=\"field-label\">Duration\u002Fdiv>\n            <input class=\"field-input\" type=\"text\" value=\"60 minutes\" readonly=\"\">\n          \u002Fdiv>\n          <div class=\"field-group\">\n            <div class=\"field-label\">Location / Join Link\u002Fdiv>\n            <input class=\"field-input\" type=\"text\" value=\"https://zoom.us/j/123456789\" readonly=\"\">\n          \u002Fdiv>\n          <div class=\"field-group\">\n            <div class=\"field-label\">Description (optional)\u002Fdiv>\n            <input class=\"field-input\" type=\"text\" value=\"Join us for the official launch of...\" readonly=\"\">\n          \u002Fdiv>\n          <button class=\"gen-btn\">\u2726  Generate Calendar Links\u002Fbutton>\n        \u002Fdiv>\n        <div class=\"app-preview\">\n          <div class=\"preview-hd\">\n            <div class=\"preview-event-name\">Product Launch Webinar\u002Fdiv>\n            <div class=\"preview-event-meta\">Nov 15, 2026 \u00b7 2:00 \u2013 3:00 PM PST \u00b7 Zoom\u002Fdiv>\n          \u002Fdiv>\n          <div class=\"preview-label\">Add to Calendar\u002Fdiv>\n          <div class=\"cal-btns\">\n            <button class=\"cal-btn\"><span class=\"cal-dot\" style=\"background:#EA4335\">\u002Fspan>Google Calendar\u002Fbutton>\n            <button class=\"cal-btn\"><span class=\"cal-dot\" style=\"background:#0078D4\">\u002Fspan>Outlook\u002Fbutton>\n            <button class=\"cal-btn\"><span class=\"cal-dot\" style=\"background:#0078D4\">\u002Fspan>Office 365\u002Fbutton>\n            <button class=\"cal-btn\"><span class=\"cal-dot\" style=\"background:#6001D2\">\u002Fspan>Yahoo Calendar\u002Fbutton>\n            <button class=\"cal-btn\"><span class=\"cal-dot\" style=\"background:#F2463A\">\u002Fspan>Apple Calendar\u002Fbutton>\n          \u002Fdiv>\n        \u002Fdiv>\n      \u002Fdiv>\n    \u002Fdiv>\n  \u002Fsection>\n\n  <!-- FEATURES -->\n  <section class=\"features\" id=\"features\">\n    <div class=\"section-eyebrow\">Why CalLink Studio\u002Fdiv>\n    <h2 class=\"section-h\">Everything you need,<br><span class=\"grad\">nothing you don't\u002Fspan>\u002Fh2>\n    <p class=\"section-p\">Built for marketers, event organizers, and developers who need reliable, beautiful calendar integrations.\u002Fp>\n    <div class=\"feat-grid\">\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\">\u002Fpath>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">5 Calendar Providers\u002Fdiv>\n        <p class=\"feat-p\">Google Calendar, Outlook, Office 365, Yahoo Calendar, and Apple Calendar \u2014 all from a single link. No juggling multiple tools.\u002Fp>\n      \u002Fdiv>\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><polyline points=\"16 18 22 12 16 6\">\u002Fpolyline><polyline points=\"8 6 2 12 8 18\">\u002Fpolyline>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">Embeddable HTML Code\u002Fdiv>\n        <p class=\"feat-p\">Copy clean, responsive HTML to embed calendar buttons directly in emails, landing pages, or any website \u2014 no dependencies required.\u002Fp>\n      \u002Fdiv>\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"10\">\u002Fcircle><polyline points=\"12 6 12 12 16 14\">\u002Fpolyline>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">Timezone Aware\u002Fdiv>\n        <p class=\"feat-p\">Events are anchored to the correct timezone. Attendees always see the right local time, wherever in the world they are.\u002Fp>\n      \u002Fdiv>\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\">\u002Frect><line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\">\u002Fline><line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\">\u002Fline>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">Live Preview\u002Fdiv>\n        <p class=\"feat-p\">See exactly how your invite will look before sharing. The preview updates in real time as you type \u2014 what you see is what they get.\u002Fp>\n      \u002Fdiv>\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><line x1=\"22\" y1=\"2\" x2=\"11\" y2=\"13\">\u002Fline><polygon points=\"22 2 15 22 11 13 2 9 22 2\">\u002Fpolygon>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">ICS File Support\u002Fdiv>\n        <p class=\"feat-p\">Standard .ics format works universally \u2014 conferences, webinars, recurring events. Copy to clipboard or download directly.\u002Fp>\n      \u002Fdiv>\n      <div class=\"feat-card\">\n        <div class=\"feat-icon\">\n          <svg width=\"22\" height=\"22\" sc-camel-view-box=\"0 0 24 24\" fill=\"none\" stroke=\"#4B87FF\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2\">\u002Fpath><circle cx=\"9\" cy=\"7\" r=\"4\">\u002Fcircle><path d=\"M23 21v-2a4 4 0 00-3-3.87\">\u002Fpath><path d=\"M16 3.13a4 4 0 010 7.75\">\u002Fpath>\u002Fsvg>\n        \u002Fdiv>\n        <div class=\"feat-h\">Team Workspace\u002Fdiv>\n        <p class=\"feat-p\">Manage all your events in one place. Share templates across your team and track link usage in the Agency plan.\u002Fp>\n      \u002Fdiv>\n    \u002Fdiv>\n  \u002Fsection>\n\n  <!-- PRICING -->\n  <section class=\"pricing\" id=\"pricing\">\n    <div class=\"section-eyebrow\">Simple Pricing\u002Fdiv>\n    <h2 class=\"section-h\">Start free,<br><span class=\"grad\">scale when ready\u002Fspan>\u002Fh2>\n    <p class=\"section-p\">No hidden fees. No annual commitment required. Cancel anytime.\u002Fp>\n    <div class=\"price-grid\">\n\n      <!-- FREE -->\n      <div class=\"price-card\">\n        <div class=\"price-tier\">Free\u002Fdiv>\n        <div class=\"price-num\">$0\u002Fdiv>\n        <div class=\"price-period\">forever\u002Fdiv>\n        <div class=\"price-div\">\u002Fdiv>\n        <ul class=\"price-feats\">\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Up to 3 events/month\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>All 5 calendar providers\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Embeddable HTML code\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>ICS file support\u002Fli>\n        \u002Ful>\n        <a href=\"#\" class=\"pbtn pbtn-outline\">Get Started Free\u002Fa>\n      \u002Fdiv>\n\n      <!-- PRO -->\n      <div class=\"price-card featured\">\n        <div class=\"feat-badge\">Most Popular\u002Fdiv>\n        <div class=\"price-tier\">Pro\u002Fdiv>\n        <div class=\"price-num grad\">$5\u002Fdiv>\n        <div class=\"price-period\">per month\u002Fdiv>\n        <div class=\"price-div\">\u002Fdiv>\n        <ul class=\"price-feats\">\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Unlimited events\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Custom branding &amp; colors\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Link analytics dashboard\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Recurring events\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Priority support\u002Fli>\n        \u002Ful>\n        <a href=\"#\" class=\"pbtn pbtn-fill\">Start Pro \u2014 $5/mo\u002Fa>\n      \u002Fdiv>\n\n      <!-- AGENCY -->\n      <div class=\"price-card\">\n        <div class=\"price-tier\">Agency\u002Fdiv>\n        <div class=\"price-num\">$9\u002Fdiv>\n        <div class=\"price-period\">per month\u002Fdiv>\n        <div class=\"price-div\">\u002Fdiv>\n        <ul class=\"price-feats\">\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Everything in Pro\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>5 team seats\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>White-label option\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Full API access\u002Fli>\n          <li><span class=\"chk\"><svg width=\"10\" height=\"8\" sc-camel-view-box=\"0 0 10 8\" fill=\"none\"><path d=\"M1 4l3 3 5-5\" stroke=\"#4B87FF\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\u002Fpath>\u002Fsvg>\u002Fspan>Dedicated onboarding\u002Fli>\n        \u002Ful>\n        <a href=\"#\" class=\"pbtn pbtn-outline\">Start Agency \u2014 $9/mo\u002Fa>\n      \u002Fdiv>\n\n    \u002Fdiv>\n  \u002Fsection>\n\n  <!-- BOTTOM CTA -->\n  <section class=\"bottom-cta\">\n    <div class=\"cta-box\">\n      <h2>Ready to make every<br><span class=\"grad\">event count?\u002Fspan>\u002Fh2>\n      <p>Join thousands of event organizers using CalLink Studio to boost calendar adoption and reduce no-shows.\u002Fp>\n      <a href=\"#\" class=\"btn-primary\">Create Your First Link \u2014 Free\u002Fa>\n    \u002Fdiv>\n  \u002Fsection>\n\n  <!-- FOOTER -->\n  <footer class=\"footer\">\n    <div class=\"footer-inner\">\n      <div class=\"footer-logo\">CalLink<span> Studio\u002Fspan>\u002Fdiv>\n      <div class=\"footer-copy\">\u00a9 2026 CalLink Studio \u00b7 Built for event makers\u002Fdiv>\n      <nav class=\"footer-links\">\n        <a href=\"#\">Privacy\u002Fa>\n        <a href=\"#\">Terms\u002Fa>\n        <a href=\"#\">Docs\u002Fa>\n        <a href=\"#\">Contact\u002Fa>\n      \u002Fnav>\n    \u002Fdiv>\n  \u002Ffooter>\n\u002Fx-dc>\n\n<script type=\"text/x-dc\">\n/* $preview: {\"width\": 1440, \"height\": 3600} */\nclass Component extends DCLogic {\n  renderVals() {\n    return {\n      platforms: [\n        { name: 'Google Calendar', bg: '#EA4335' },\n        { name: 'Outlook', bg: '#0078D4' },\n        { name: 'Office 365', bg: '#0078D4' },\n        { name: 'Yahoo Calendar', bg: '#6001D2' },\n        { name: 'Apple Calendar', bg: '#F2463A' },\n      ],\n    };\n  }\n}\n\u002Fscript>\n\u002Fbody>\u002Fhtml>"
+  </script>
+</body>
+</html>
