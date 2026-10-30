@@ -388,7 +388,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .plan-note{font-size:10.5px;color:var(--fg-3);}
 
 /* brand customizer preview */
-.brand-preview{border:1.5px solid var(--border);border-radius:10px;padding:12px;background:var(--surface-2);opacity:.55;pointer-events:none;}
+.brand-preview{border:1.5px solid var(--border);border-radius:10px;padding:12px;background:var(--surface-2);}
 .color-swatches{display:flex;gap:7px;flex-wrap:wrap;}
 .swatch{width:28px;height:28px;border-radius:7px;border:2px solid var(--border);cursor:pointer;}
 .swatch.active{border-color:var(--fg);outline:2px solid var(--fg);outline-offset:2px;}
@@ -434,10 +434,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
     </div>
 
     <div class="header-acts">
-      <button class="btn btn-pro btn-sm" onclick="openPricing()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Upgrade
-      </button>
       <button class="btn btn-ghost btn-sm" onclick="openSyncModal()">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
         Sync Calendar
@@ -496,67 +492,6 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
           Fetch &amp; Sync
         </button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ─── PRICING MODAL ─── -->
-<div class="modal-bg" id="pricingModal">
-  <div class="modal">
-    <div class="modal-hd">
-      <span class="modal-title">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        Plans &amp; Pricing
-      </span>
-      <button class="close-btn" onclick="closePricing()">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-    </div>
-    <div class="price-grid">
-      <!-- Free -->
-      <div class="price-card">
-        <div class="plan-name">Free</div>
-        <div class="plan-price">$0 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>10 events / month</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Google, Outlook, iCloud</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>ICS copy &amp; HTML snippet</div>
-          <div class="plan-feat lock"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>No Yahoo / Office 365</div>
-          <div class="plan-feat lock"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>No custom branding</div>
-        </div>
-        <div class="plan-note">Current plan</div>
-      </div>
-      <!-- Pro (featured) -->
-      <div class="price-card featured">
-        <div class="plan-name" style="color:var(--accent)">Pro</div>
-        <div class="plan-price">$5 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Unlimited events</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>All 4 calendars + Yahoo</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Custom brand colours &amp; logo</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Click-tracking analytics</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Bulk CSV import</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Calendar auto-sync</div>
-        </div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="showToast('Redirecting to checkout…','info');closePricing()">Start Pro — $5/mo</button>
-      </div>
-      <!-- Agency -->
-      <div class="price-card">
-        <div class="plan-name">Agency</div>
-        <div class="plan-price">$9 <small>/ mo</small></div>
-        <div class="price-sep"></div>
-        <div class="plan-feats">
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Everything in Pro</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>White-label &amp; custom domain</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Team workspace (5 seats)</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>REST API access</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Zapier / Make webhooks</div>
-          <div class="plan-feat"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Priority support</div>
-        </div>
-        <button class="btn btn-dark" style="width:100%;justify-content:center;" onclick="showToast('Redirecting to checkout…','info');closePricing()">Start Agency — $9/mo</button>
       </div>
     </div>
   </div>
@@ -713,47 +648,41 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
       </div>
     </div>
 
-    <!-- Brand Customizer (Pro) -->
+    <!-- Brand Customizer -->
     <div class="card">
       <div class="card-hd">
         <span class="card-title">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="19" cy="13" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="10.5" cy="19.5" r="2.5"/><path d="M13.5 9L19 10.5M13.5 9L10.5 17M6 14.5L10.5 17M19 10.5L10.5 17"/></svg>
           Brand Customizer
         </span>
-        <span class="pro-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Pro</span>
+        <span class="pro-badge">Free</span>
       </div>
       <div class="pro-locked-wrap">
         <div class="brand-preview space-3">
           <div class="form-group">
             <label class="form-label">Button Colour</label>
             <div class="color-swatches">
-              <div class="swatch active" style="background:#2563eb;"></div>
-              <div class="swatch" style="background:#059669;"></div>
-              <div class="swatch" style="background:#7c3aed;"></div>
-              <div class="swatch" style="background:#dc2626;"></div>
-              <div class="swatch" style="background:#0f172a;"></div>
+              <div class="swatch" data-color="#2563eb" style="background:#2563eb;" onclick="pickColor('#2563eb')" title="#2563eb"></div>
+              <div class="swatch" data-color="#059669" style="background:#059669;" onclick="pickColor('#059669')" title="#059669"></div>
+              <div class="swatch" data-color="#7c3aed" style="background:#7c3aed;" onclick="pickColor('#7c3aed')" title="#7c3aed"></div>
+              <div class="swatch" data-color="#dc2626" style="background:#dc2626;" onclick="pickColor('#dc2626')" title="#dc2626"></div>
+              <div class="swatch" data-color="#0f172a" style="background:#0f172a;" onclick="pickColor('#0f172a')" title="#0f172a"></div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Button Style</label>
             <div class="style-pills">
-              <div class="style-pill active">Outlined</div>
-              <div class="style-pill">Filled</div>
-              <div class="style-pill">Pill</div>
+              <div class="style-pill active" data-style="outlined" onclick="pickStyle('outlined')">Outlined</div>
+              <div class="style-pill" data-style="filled" onclick="pickStyle('filled')">Filled</div>
+              <div class="style-pill" data-style="pill" onclick="pickStyle('pill')">Pill</div>
             </div>
           </div>
           <div class="form-group">
             <label class="form-label">Logo URL</label>
-            <input class="form-input" placeholder="https://yoursite.com/logo.png" readonly/>
+            <input class="form-input" id="brandLogo" placeholder="https://yoursite.com/logo.png" oninput="brand.logo=this.value.trim();updateLinks()"/>
           </div>
         </div>
-        <div class="pro-overlay" onclick="openPricing()">
-          <span class="pro-badge"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Pro Feature</span>
-          <div class="pro-label">Custom Branding</div>
-          <div class="pro-desc">Match button colours, style &amp; logo to your brand.</div>
-          <button class="unlock-btn">Unlock with Pro — $5/mo</button>
-        </div>
-      </div>
+</div>
     </div>
 
     <!-- Direct Links -->
@@ -837,6 +766,7 @@ const MOCK = [
   {title:"Knotie AI Pro Onboarding Review",start:"2026-11-15T11:30",end:"2026-11-15T12:00",tz:"Australia/Sydney",loc:"https://meet.google.com/xyz-1234-890",desc:"1-on-1 walkthrough of your automation dashboard."}
 ];
 let icsOpen = false;
+const brand = {color:'', style:'outlined', logo:''};
 let currentTheme = null; // null = system
 
 // ─── INIT ───
@@ -999,7 +929,14 @@ function updateLinks() {
 function attrEsc(v) { return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
 
 function buildEmailHtml(withComment) {
-  const btnStyle = 'display:inline-block;border:1px solid #d1d5db;border-radius:8px;padding:8px 13px;text-decoration:none;color:#1f2937;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background-color:#ffffff;';
+  const bc = /^#[0-9a-f]{6}$/i.test(brand.color) ? brand.color : '';
+  const filled = bc && brand.style !== 'outlined';
+  const radius = brand.style === 'pill' ? '999px' : '8px';
+  const btnStyle = 'display:inline-block;border:1px solid ' + (bc || '#d1d5db') + ';border-radius:' + radius +
+    ';padding:8px 13px;text-decoration:none;color:' + (filled ? '#ffffff' : (bc || '#1f2937')) +
+    ';font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background-color:' + (filled ? bc : '#ffffff') + ';';
+  const logo = /^https?:\/\//i.test(brand.logo)
+    ? `<img src="${attrEsc(brand.logo)}" alt="" height="32" style="display:block;height:32px;width:auto;border:0;margin:0 0 10px 0;">\n` : '';
   const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(links.ics);
   const items = [
     {label:'Google Calendar', href:links.google,    color:'#EA4335', extra:' target="_blank"'},
@@ -1010,9 +947,9 @@ function buildEmailHtml(withComment) {
   ];
   const cells = items.map(i =>
 `    <td style="padding:4px;">
-      <a href="${attrEsc(i.href)}"${i.extra} style="${btnStyle}"><span style="color:${i.color};font-size:14px;line-height:12px;">&#9679;</span>&nbsp;${i.label}</a>
+      <a href="${attrEsc(i.href)}"${i.extra} style="${btnStyle}"><span style="color:${filled ? '#ffffff' : i.color};font-size:14px;line-height:12px;">&#9679;</span>&nbsp;${i.label}</a>
     </td>`).join('\n');
-  return `${withComment ? '<!-- Add to Calendar Buttons — CalLink Studio -->\n' : ''}<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin:0 0 10px 0;">Add to Calendar</p>
+  return `${withComment ? '<!-- Add to Calendar Buttons — CalLink Studio -->\n' : ''}${logo}<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin:0 0 10px 0;">Add to Calendar</p>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
   <tr>
 ${cells}
@@ -1101,11 +1038,21 @@ async function copyVisual() {
   }
 }
 
+// ─── BRAND ───
+function pickColor(c) {
+  brand.color = brand.color === c ? '' : c;
+  document.querySelectorAll('.swatch').forEach(el => el.classList.toggle('active', el.dataset.color === brand.color));
+  updateLinks();
+}
+function pickStyle(st) {
+  brand.style = st;
+  document.querySelectorAll('.style-pill').forEach(el => el.classList.toggle('active', el.dataset.style === st));
+  updateLinks();
+}
+
 // ─── MODALS ───
 function openSyncModal()  { document.getElementById('syncModal').classList.add('open'); }
 function closeSyncModal() { document.getElementById('syncModal').classList.remove('open'); }
-function openPricing()    { document.getElementById('pricingModal').classList.add('open'); }
-function closePricing()   { document.getElementById('pricingModal').classList.remove('open'); }
 
 document.querySelectorAll('.modal-bg').forEach(m => {
   m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); });
