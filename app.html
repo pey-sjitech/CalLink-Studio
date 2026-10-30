@@ -3,7 +3,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.441.0/umd/lucide.min.js"></script>
 
 <style>
@@ -804,7 +804,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
         </button>
       </div>
       <div id="icsRaw" class="ics-raw"></div>
-      <div id="icsInstructions" style="display:none;" class="small muted" style="margin-top:6px;">
+      <div id="icsInstructions" style="display:none;margin-top:6px;" class="small muted">
         Paste into a text editor, save as <strong>event.ics</strong>, then open with your calendar app.
       </div>
     </div>
@@ -876,28 +876,60 @@ function loadSynced() {
 }
 
 // ─── LINK BUILDER ───
-function toUTC(dtStr) {
-  if (!dtStr) return '';
-  const d = new Date(dtStr);
-  return d.toISOString().replace(/[-:]|\.\d{3}/g,'').slice(0,15) + 'Z';
+// Offset (ms) of a time zone from UTC at a given instant.
+function tzOffsetMs(ms, tz) {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: tz, hourCycle: 'h23', year: 'numeric', month: '2-digit', day: '2-digit',
+    hour: '2-digit', minute: '2-digit', second: '2-digit'
+  }).formatToParts(new Date(ms));
+  const o = {};
+  parts.forEach(p => { o[p.type] = p.value; });
+  return Date.UTC(+o.year, o.month - 1, +o.day, +o.hour, +o.minute, +o.second) - ms;
+}
+
+// Treat a datetime-local value as wall-clock time in `tz` and return UTC ms.
+function wallToUtcMs(str, tz) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(str || '');
+  if (!m) return NaN;
+  const asUtc = Date.UTC(+m[1], m[2] - 1, +m[3], +m[4], +m[5]);
+  let guess = asUtc;
+  for (let i = 0; i < 2; i++) guess = asUtc - tzOffsetMs(guess, tz);
+  return guess;
+}
+
+function toUTC(dtStr, tz) {
+  const ms = wallToUtcMs(dtStr, tz);
+  if (isNaN(ms)) return '';
+  return new Date(ms).toISOString().replace(/[-:]|\.\d{3}/g, '');
 }
 
 function formatDisplay(startStr, tz) {
   if (!startStr) return 'Select date & time';
   try {
-    const d = new Date(startStr);
+    const d = new Date(startStr + ':00Z');
     return d.toLocaleString('en-AU', {weekday:'long',year:'numeric',month:'long',day:'numeric',hour:'2-digit',minute:'2-digit',timeZone:'UTC'}) + ' (' + tz + ')';
   } catch { return startStr; }
 }
 
-function calcDuration(s, e) {
+function calcDuration(s, e, tz) {
   if (!s || !e) return null;
-  const diff = new Date(e) - new Date(s);
-  if (diff <= 0) return null;
+  const diff = wallToUtcMs(e, tz) - wallToUtcMs(s, tz);
+  if (!(diff > 0)) return null;
   const mins = Math.round(diff/60000);
   if (mins < 60) return `${mins} min`;
   const h = Math.floor(mins/60), m = mins%60;
   return m ? `${h}h ${m}m` : `${h}h`;
+}
+
+// RFC 5545 text escaping and 75-octet line folding.
+function icsEscape(t) {
+  return String(t).replace(/\\/g,'\\\\').replace(/;/g,'\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n');
+}
+function icsFold(line) {
+  const out = [];
+  while (line.length > 74) { out.push(line.slice(0, 74)); line = ' ' + line.slice(74); }
+  out.push(line);
+  return out.join('\r\n');
 }
 
 function updateLinks() {
@@ -909,15 +941,14 @@ function updateLinks() {
   const desc  = document.getElementById('evDesc').value.trim();
 
   // Duration tag
-  const dur = calcDuration(s, e);
+  const dur = calcDuration(s, e, tz);
   const tag = document.getElementById('durationTag');
   if (!dur) { tag.textContent = 'End must be after start'; tag.className = 'duration-tag err'; }
   else { tag.textContent = `⏱ ${dur}`; tag.className = 'duration-tag'; }
 
-  if (!s || !e) return;
-
-  const us = toUTC(s), ue = toUTC(e);
-  const sIso = new Date(s).toISOString(), eIso = new Date(e).toISOString();
+  const us = toUTC(s, tz), ue = toUTC(e, tz);
+  if (!us || !ue) return;
+  const sIso = new Date(wallToUtcMs(s, tz)).toISOString(), eIso = new Date(wallToUtcMs(e, tz)).toISOString();
 
   // Google
   const gp = new URLSearchParams({action:'TEMPLATE',text:title,dates:`${us}/${ue}`,details:desc,location:loc,ctz:tz});
@@ -932,17 +963,19 @@ function updateLinks() {
   const yp = new URLSearchParams({v:'60',title,st:us,et:ue,desc,in_loc:loc});
   links.yahoo = 'https://calendar.yahoo.com/?' + yp;
 
-  // ICS
+  // ICS (times are UTC, so no TZID)
+  const stamp = new Date().toISOString().replace(/[-:]|\.\d{3}/g,'');
   links.ics = [
     'BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//CalLink Studio//EN',
     'CALSCALE:GREGORIAN','METHOD:PUBLISH','BEGIN:VEVENT',
-    `SUMMARY:${title}`,
-    `DESCRIPTION:${desc.replace(/\n/g,'\\n')}`,
-    `LOCATION:${loc}`,
+    `UID:${us}-${ue}@callink.studio`,
+    `DTSTAMP:${stamp}`,
+    `SUMMARY:${icsEscape(title)}`,
+    `DESCRIPTION:${icsEscape(desc)}`,
+    `LOCATION:${icsEscape(loc)}`,
     `DTSTART:${us}`,`DTEND:${ue}`,
-    `TZID:${tz}`,
     'STATUS:CONFIRMED','END:VEVENT','END:VCALENDAR'
-  ].join('\r\n');
+  ].map(icsFold).join('\r\n');
 
   // Update preview
   document.getElementById('pvTitle').textContent    = title;
@@ -958,49 +991,33 @@ function updateLinks() {
   // iCalendar uses ICS — href left as '#', handled by appleCalClick()
 
   if (icsOpen) document.getElementById('icsRaw').textContent = links.ics;
-  generateHtml(title, links.google, links.outlook, links.office365, links.yahoo, links.ics);
+  document.getElementById('htmlOut').textContent = buildEmailHtml(true);
 }
 
-// ─── HTML GENERATOR ───
-function generateHtml(title, gUrl, oUrl, o365, yUrl, icsData) {
-  const btnStyle = 'display:inline-flex;align-items:center;gap:6px;border:1px solid #d1d5db;border-radius:8px;padding:8px 13px;text-decoration:none;color:#1f2937;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background:#fff;';
-  const code = `<!-- Add to Calendar Buttons — CalLink Studio -->
-<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin-bottom:10px;">Add to Calendar</p>
+// ─── EMAIL-SAFE HTML ───
+// Inline styles and text glyphs only: Gmail/Outlook strip classes, <style> and SVG.
+function attrEsc(v) { return String(v).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;'); }
+
+function buildEmailHtml(withComment) {
+  const btnStyle = 'display:inline-block;border:1px solid #d1d5db;border-radius:8px;padding:8px 13px;text-decoration:none;color:#1f2937;font-family:Arial,sans-serif;font-size:12px;font-weight:bold;background-color:#ffffff;';
+  const icsHref = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(links.ics);
+  const items = [
+    {label:'Google Calendar', href:links.google,    color:'#EA4335', extra:' target="_blank"'},
+    {label:'Outlook',         href:links.outlook,   color:'#0078D4', extra:' target="_blank"'},
+    {label:'Office 365',      href:links.office365, color:'#0078D4', extra:' target="_blank"'},
+    {label:'Yahoo',           href:links.yahoo,     color:'#6001D2', extra:' target="_blank"'},
+    {label:'iCalendar',       href:icsHref,         color:'#F2463A', extra:' download="event.ics"'}
+  ];
+  const cells = items.map(i =>
+`    <td style="padding:4px;">
+      <a href="${attrEsc(i.href)}"${i.extra} style="${btnStyle}"><span style="color:${i.color};font-size:14px;line-height:12px;">&#9679;</span>&nbsp;${i.label}</a>
+    </td>`).join('\n');
+  return `${withComment ? '<!-- Add to Calendar Buttons — CalLink Studio -->\n' : ''}<p style="font-family:Arial,sans-serif;font-size:14px;font-weight:bold;color:#1f2937;margin:0 0 10px 0;">Add to Calendar</p>
 <table role="presentation" border="0" cellpadding="0" cellspacing="0">
   <tr>
-    <td style="padding:4px;">
-      <a href="${gUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="9" rx="5" fill="#EA4335"/><rect y="6" width="48" height="3" fill="#EA4335"/><rect x="6" y="14" width="8" height="8" rx="1" fill="#4285F4"/><rect x="20" y="14" width="8" height="8" rx="1" fill="#FBBC05"/><rect x="34" y="14" width="8" height="8" rx="1" fill="#34A853"/><rect x="6" y="26" width="8" height="8" rx="1" fill="#34A853"/><rect x="20" y="26" width="8" height="8" rx="1" fill="#4285F4"/><rect x="34" y="26" width="8" height="8" rx="1" fill="#EA4335"/></svg>
-        Google Calendar
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${oUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#0078D4"/><path d="M10 14h10v20H10a2 2 0 0 1-2-2V16a2 2 0 0 1 2-2z" fill="#fff"/><ellipse cx="15" cy="24" rx="4" ry="5" fill="#0078D4"/><path d="M22 14h18v4H22zm0 7h18v4H22zm0 7h18v4H22z" fill="#fff"/></svg>
-        Outlook
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${o365}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#0078D4"/><rect x="6" y="8" width="14" height="30" rx="2" fill="#fff" opacity=".9"/><rect x="14" y="4" width="14" height="30" rx="2" fill="#50B7F5" opacity=".85"/><rect x="22" y="8" width="14" height="30" rx="2" fill="#fff" opacity=".8"/></svg>
-        Office 365
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="${yUrl}" target="_blank" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#6001D2"/><path d="M8 10h10l8 14 8-14h10L30 32v10h-10V32L8 10z" fill="#fff"/></svg>
-        Yahoo
-      </a>
-    </td>
-    <td style="padding:4px;">
-      <a href="data:text/calendar;charset=utf-8,${encodeURIComponent(icsData)}" download="event.ics" style="${btnStyle}">
-        <svg width="15" height="15" viewBox="0 0 48 48"><rect width="48" height="48" rx="5" fill="#fff" stroke="#e5e7eb" stroke-width="2"/><rect y="0" width="48" height="11" rx="5" fill="#F2463A"/><rect y="7" width="48" height="4" fill="#F2463A"/><rect x="9" y="0" width="4" height="7" rx="2" fill="#7b0000"/><rect x="35" y="0" width="4" height="7" rx="2" fill="#7b0000"/><text x="24" y="36" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1d1d1f" text-anchor="middle">17</text><text x="24" y="22" font-family="Arial,sans-serif" font-size="7" font-weight="600" fill="#fff" text-anchor="middle">SUN</text></svg>
-        iCalendar
-      </a>
-    </td>
+${cells}
   </tr>
 </table>`;
-  document.getElementById('htmlOut').textContent = code;
 }
 
 // ─── CHAR COUNTER ───
@@ -1029,7 +1046,7 @@ function toggleIcs() {
     box.textContent = links.ics;
     box.classList.add('show');
     hint.style.display = 'block';
-    copyText(links.ics, 'ICS content copied — paste into a text editor and save as .ics').catch(()=>{});
+    copyText(links.ics, null);
     showToast('ICS copied! Save as event.ics and open in your calendar app.','ok');
   } else {
     box.classList.remove('show');
@@ -1056,18 +1073,31 @@ function copyLink(key, msg) { copyText(links[key], msg); }
 function copyHtml() { copyText(document.getElementById('htmlOut').textContent, 'HTML snippet copied!'); }
 
 async function copyVisual() {
-  const el = document.getElementById('calButtonsRich');
+  if (!links.google) { showToast('Fill in the event details first.', 'warn'); return; }
+  const html = buildEmailHtml(false);
+  const plain = 'Add to Calendar\n' + [
+    ['Google Calendar', links.google], ['Outlook', links.outlook],
+    ['Office 365', links.office365], ['Yahoo', links.yahoo]
+  ].map(([n, u]) => `${n}: ${u}`).join('\n');
   try {
-    const blob = new Blob([el.innerHTML], {type:'text/html'});
-    await navigator.clipboard.write([new ClipboardItem({'text/html':blob})]);
-    showToast('Rich calendar buttons copied — paste directly into Gmail or Outlook!','ok');
+    await navigator.clipboard.write([new ClipboardItem({
+      'text/html':  new Blob([html],  {type:'text/html'}),
+      'text/plain': new Blob([plain], {type:'text/plain'})
+    })]);
+    showToast('Buttons copied — paste directly into Gmail or Outlook!','ok');
   } catch {
+    // Fallback: select a hidden, fully inline-styled copy so the styled buttons survive the paste.
+    const host = document.createElement('div');
+    host.innerHTML = html;
+    host.style.cssText = 'position:fixed;left:-9999px;top:0;';
+    document.body.appendChild(host);
     try {
-      const r = document.createRange(); r.selectNodeContents(el);
-      const s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-      document.execCommand('copy'); s.removeAllRanges();
-      showToast('Buttons copied! Paste with Ctrl+V / Cmd+V into your email.','ok');
+      const r = document.createRange(); r.selectNodeContents(host);
+      const sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+      const ok = document.execCommand('copy'); sel.removeAllRanges();
+      showToast(ok ? 'Buttons copied! Paste with Ctrl+V / Cmd+V into your email.' : 'Copy failed — use the HTML snippet below instead.', ok ? 'ok' : 'err');
     } catch { showToast('Copy failed — use the HTML snippet below instead.','err'); }
+    document.body.removeChild(host);
   }
 }
 
@@ -1121,6 +1151,7 @@ function toggleTheme() {
 // ─── TOAST ───
 function showToast(msg, type='ok') {
   const icons = {
+    warn:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>',
     ok:  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>',
     info:'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>',
     err: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>'
