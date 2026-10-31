@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://script.google.com https://script.googleusercontent.com; form-action 'none'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>CalLink Studio - Patient reminders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+<link rel="stylesheet" href="reminders.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="index.html" aria-label="CalLink Studio home">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M3 9h18M8 2v4M16 2v4"/></svg>
+    </span>
+    CalLink Studio
+  </a>
+  <nav class="top-nav">
+    <a class="btn ghost" href="app.html">Single event</a>
+    <button type="button" class="btn ghost" id="guideBtn">How it works</button>
+  </nav>
+</header>
+
+<main class="stack">
+
+  <section class="card" aria-labelledby="h-connect">
+    <h2 id="h-connect">1. Connect</h2>
+    <p class="lede">Emails are sent from your own Google account by a small script you set up once. <button type="button" class="link" id="setupBtn">Setup steps</button></p>
+
+    <div class="row">
+      <label class="field">
+        <span>Script web app URL</span>
+        <input id="setUrl" type="url" placeholder="https://script.google.com/macros/s/…/exec" inputmode="url" autocomplete="off" spellcheck="false">
+      </label>
+      <label class="field">
+        <span>Secret key</span>
+        <input id="setSecret" type="password" placeholder="The key you set in the script" autocomplete="off" spellcheck="false">
+      </label>
+    </div>
+    <div class="row">
+      <label class="field">
+        <span>Clinic name</span>
+        <input id="setClinic" type="text" maxlength="80" placeholder="Bondi Clinic" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Contact for changes <em>(phone or email)</em></span>
+        <input id="setContact" type="text" maxlength="160" placeholder="1300 000 000" autocomplete="off">
+      </label>
+    </div>
+    <label class="field">
+      <span>Default location <em>(used when a row has none)</em></span>
+      <input id="setLocation" type="text" maxlength="160" placeholder="1 Beach Rd, Bondi" autocomplete="off">
+    </label>
+    <div class="actions inline">
+      <button type="button" class="btn" id="testBtn">Test connection</button>
+      <span id="connStatus" class="status ok" role="status"></span>
+    </div>
+  </section>
+
+  <section class="card" aria-labelledby="h-import">
+    <h2 id="h-import">2. Import appointments</h2>
+    <p class="lede">Upload a CSV (or paste rows) with the columns <code>name, email, date, time</code> and optionally <code>location</code>. Dates as <code>YYYY-MM-DD</code> or <code>DD/MM/YYYY</code>; times as <code>14:30</code> or <code>2:30 PM</code>.</p>
+    <div class="actions inline">
+      <label class="btn file-btn">Choose CSV file<input type="file" id="file" accept=".csv,text/csv,text/plain"></label>
+      <button type="button" class="btn ghost" id="templateBtn">Download template</button>
+    </div>
+    <label class="field">
+      <span>Or paste rows</span>
+      <textarea id="paste" rows="4" spellcheck="false" placeholder="name,email,date,time&#10;Jane Smith,jane@example.com,2026-12-01,09:30"></textarea>
+    </label>
+    <div class="actions inline">
+      <button type="button" class="btn primary" id="loadBtn">Load pasted rows</button>
+      <button type="button" class="btn ghost" id="clearBtn">Clear</button>
+    </div>
+    <p class="muted">Don't include diagnoses, treatments or other medical details. Emails contain only name, date, time and place.</p>
+  </section>
+
+  <section class="card" id="reviewCard" aria-labelledby="h-review" hidden>
+    <h2 id="h-review">3. Review and send</h2>
+    <p id="summary" class="summary" role="status"></p>
+    <div class="table-wrap">
+      <table id="table">
+        <thead>
+          <tr><th>Patient</th><th>Email</th><th>Appointment</th><th>Reminders</th><th>Status</th></tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+    <div class="actions">
+      <button type="button" class="btn primary" id="sendBtn">Send confirmations &amp; schedule reminders</button>
+    </div>
+    <p class="muted">Each patient gets a confirmation now, then a reminder 1 week and 1 day before. Appointments closer than that skip the reminders that no longer fit. To cancel one, set its Status to CANCELLED in the Google Sheet.</p>
+  </section>
+
+</main>
+
+<footer class="foot">Patient details are sent only to your own Google script. This page stores nothing about patients.</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<dialog id="confirm" aria-labelledby="confirmTitle">
+  <div class="guide-body">
+    <h2 id="confirmTitle">Send to <span id="confirmCount"></span>?</h2>
+    <p>This emails each patient a confirmation right now and schedules their reminders. It cannot be undone from this page.</p>
+  </div>
+  <div class="guide-actions">
+    <span class="spacer"></span>
+    <button type="button" class="btn" id="confirmNo">Cancel</button>
+    <button type="button" class="btn primary" id="confirmYes">Send</button>
+  </div>
+</dialog>
+
+<dialog id="setup" aria-labelledby="setupTitle" class="wide">
+  <div class="guide-body">
+    <h2 id="setupTitle">One-time setup (about 10 minutes)</h2>
+    <ol class="steps">
+      <li>Create a new <strong>Google Sheet</strong>. Open <em>Extensions → Apps Script</em>.</li>
+      <li>Press <button type="button" class="link" id="copyScript">Copy script</button>, delete the sample code in the editor, paste, and save.</li>
+      <li>Open <em>Project Settings → Script Properties</em> and add <code>SECRET</code> with a long random value (12+ characters). Keep it private.</li>
+      <li>Choose <em>Deploy → New deployment → Web app</em>. Execute as <strong>Me</strong>, access <strong>Anyone</strong>. Authorise when asked, then copy the web app URL.</li>
+      <li>Set the script's time zone in <em>Project Settings</em> to your clinic's.</li>
+      <li>Paste the URL and secret above, then press <strong>Test connection</strong>.</li>
+    </ol>
+    <p class="muted">Patient data is kept in the "Appointments" sheet of your own spreadsheet and deleted 30 days after each appointment.</p>
+  </div>
+  <div class="guide-actions">
+    <span class="spacer"></span>
+    <button type="button" class="btn primary" id="setupClose">Done</button>
+  </div>
+</dialog>
+
+<dialog id="guide" aria-labelledby="guideTitle">
+  <div class="guide-body">
+    <p class="guide-step" id="guideStep"></p>
+    <h2 id="guideTitle"></h2>
+    <p id="guideText"></p>
+    <div class="dots" id="guideDots" aria-hidden="true"></div>
+  </div>
+  <div class="guide-actions">
+    <button type="button" class="btn ghost" id="guideSkip">Skip</button>
+    <span class="spacer"></span>
+    <button type="button" class="btn" id="guideBack">Back</button>
+    <button type="button" class="btn primary" id="guideNext">Next</button>
+  </div>
+</dialog>
+
+<script src="patient-reminders.js"></script>
+</body>
+</html>

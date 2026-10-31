@@ -202,3 +202,6 @@ dialog::backdrop { background: rgba(0, 0, 0, .5); }
 .more { margin-top: 4px; border-top: 1px solid var(--line); padding-top: 10px; }
 .more summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--accent); min-height: 32px; margin-bottom: 8px; }
 .more .muted { margin: 0; }
+
+.top-nav { display: flex; gap: 4px; align-items: center; flex-wrap: wrap; justify-content: flex-end; }
+.top-nav a.btn { text-decoration: none; display: inline-flex; align-items: center; }
