@@ -195,3 +195,10 @@ dialog::backdrop { background: rgba(0, 0, 0, .5); }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
 }
+
+[hidden] { display: none !important; }
+.check { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-bottom: 8px; cursor: pointer; font-size: .95rem; }
+.check input { width: 20px; height: 20px; min-height: 0; flex: none; accent-color: var(--accent); }
+.more { margin-top: 4px; border-top: 1px solid var(--line); padding-top: 10px; }
+.more summary { cursor: pointer; font-weight: 600; font-size: .9rem; color: var(--accent); min-height: 32px; margin-bottom: 8px; }
+.more .muted { margin: 0; }

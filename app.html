@@ -45,7 +45,12 @@
         </label>
       </div>
 
-      <label class="field">
+      <label class="check">
+        <input type="checkbox" id="evAllDay">
+        <span>All-day event</span>
+      </label>
+
+      <label class="field" id="tzField">
         <span>Time zone</span>
         <select id="evTz"></select>
       </label>
@@ -60,6 +65,39 @@
         <textarea id="evDesc" rows="3" maxlength="500" placeholder="Agenda or details"></textarea>
         <small id="charCount" class="muted">0 / 500</small>
       </label>
+      <details class="more">
+        <summary>More options</summary>
+        <div class="row">
+          <label class="field">
+            <span>Repeats</span>
+            <select id="evRepeat">
+              <option value="">Does not repeat</option>
+              <option value="DAILY">Daily</option>
+              <option value="WEEKLY">Weekly</option>
+              <option value="MONTHLY">Monthly</option>
+              <option value="YEARLY">Yearly</option>
+            </select>
+          </label>
+          <label class="field" id="timesField" hidden>
+            <span>Times <em>(blank = no end)</em></span>
+            <input id="evTimes" type="number" min="1" max="365" inputmode="numeric">
+          </label>
+        </div>
+        <label class="field">
+          <span>Reminder</span>
+          <select id="evReminder">
+            <option value="">None</option>
+            <option value="10">10 minutes before</option>
+            <option value="60">1 hour before</option>
+            <option value="1440">1 day before</option>
+          </select>
+        </label>
+        <label class="check">
+          <input type="checkbox" id="evExtra">
+          <span>Also show Office 365 and Yahoo buttons</span>
+        </label>
+        <p class="muted">Repeats work in Google and iCal. Reminders work in iCal. Outlook, Office 365 and Yahoo add a single event.</p>
+      </details>
     </form>
   </section>
 
@@ -75,6 +113,8 @@
       <div class="cal-btns" id="calBtns">
         <a class="cal-btn" id="btnGoogle" href="#" target="_blank" rel="noopener noreferrer"><img src="icons/google.png" alt="" width="18" height="18"><span>Google</span></a>
         <a class="cal-btn" id="btnOutlook" href="#" target="_blank" rel="noopener noreferrer"><img src="icons/outlook.png" alt="" width="18" height="18"><span>Outlook</span></a>
+        <a class="cal-btn" id="btnOffice" href="#" target="_blank" rel="noopener noreferrer" hidden><img src="icons/office365.png" alt="" width="18" height="18"><span>Office 365</span></a>
+        <a class="cal-btn" id="btnYahoo" href="#" target="_blank" rel="noopener noreferrer" hidden><img src="icons/yahoo.png" alt="" width="18" height="18"><span>Yahoo</span></a>
         <a class="cal-btn" id="btnIcal" href="#" download="event.ics"><img src="icons/ical.png" alt="" width="18" height="18"><span>iCal (Apple)</span></a>
       </div>
     </div>
